@@ -14,9 +14,9 @@ namespace grEd
 			InitializeComponent();
 
 			Figure figure = new Figure();
+			figure.Draw(Canvas);
 
-			Path path = figure.path;
-			Canvas.Children.Add(path);
+			//Canvas.Children.Add(figure.path);
 		}
 	}
 }

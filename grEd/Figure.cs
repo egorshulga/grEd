@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -25,7 +26,11 @@ namespace grEd
 			
 			path.Data = pathGeometry;
 			path.Stroke = Brushes.Black;
-			path.StrokeThickness = 2;
+		}
+
+		public void Draw(Panel canvas)
+		{
+			canvas.Children.Add(path);
 		}
 	}
 }
