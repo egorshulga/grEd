@@ -3,6 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Width="1000" Height="500" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Canvas x:Name="canvas"/>
+        <Canvas x:Name="Canvas"/>
     </Grid>
 </Window>

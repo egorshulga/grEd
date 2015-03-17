@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using System.Windows.Media;
+using System.Windows.Controls;
 using System.Windows.Shapes;
 
 namespace grEd
@@ -13,6 +13,10 @@ namespace grEd
 		{
 			InitializeComponent();
 
+			Figure figure = new Figure();
+
+			Path path = figure.path;
+			Canvas.Children.Add(path);
 		}
 	}
 }
