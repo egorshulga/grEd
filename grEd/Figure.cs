@@ -7,7 +7,7 @@ namespace grEd
 {
 	class Figure
 	{
-		public readonly Path path = new Path();
+		private readonly Path path = new Path();
 		private readonly PathGeometry pathGeometry = new PathGeometry();
 		private readonly PathFigure pathFigure = new PathFigure();
 
@@ -27,6 +27,7 @@ namespace grEd
 			path.Data = pathGeometry;
 			path.Stroke = Brushes.Black;
 		}
+
 
 		public void Draw(Panel canvas)
 		{
