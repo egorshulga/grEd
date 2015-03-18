@@ -1,46 +1,67 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace grEd
 {
 	class Figure
 	{
-		internal readonly PathFigure pathFigure = new PathFigure();
+		protected readonly Path path = new Path();
+		protected readonly PathGeometry pathGeometry = new PathGeometry();
+		protected readonly PathFigure pathFigure = new PathFigure();
 
-		private const bool isStroke = true;
+		public Point StartPoint { get { return pathFigure.StartPoint; } set { pathFigure.StartPoint = value; } }
+		public Brush Stroke { get { return path.Stroke; } set { path.Stroke = value; } }
+		public double StrokeThickness { get { return path.StrokeThickness; } set { path.StrokeThickness = value; } }
+		public Brush Fill { get { return path.Fill; } set { path.Fill = value; } }
+		public FillRule FillRule { get { return pathGeometry.FillRule; } set { pathGeometry.FillRule = value; } }
+		public bool IsClosed { get { return pathFigure.IsClosed; } set { pathFigure.IsClosed = value; } }
+		public bool IsFilled { get { return pathFigure.IsFilled; } set { pathFigure.IsFilled = value; } }
+
+		private const bool isStroked = true;
 		private const double rotationAngle = 0;
 		private const bool isLargeArc = false;
+		
 
-		public Figure(Point startPoint)
+		public Figure(Panel panel, Point startPoint)
 		{
-			pathFigure.StartPoint = startPoint;
+			StartPoint = startPoint;
+			
+			pathGeometry.Figures.Add(pathFigure);
+			path.Data = pathGeometry;
+			panel.Children.Add(path);
+
+			Stroke = Brushes.Black;
 		}
+
+
+		public Point Position
+		{
+			set { Canvas.SetLeft(path, value.X); Canvas.SetTop(path, value.Y); }
+		}
+
 
 		private void AddSegment(PathSegment segment)
 		{
 			pathFigure.Segments.Add(segment);
 		}
 
-		internal void AddArcSegment(Point endPoint, Size semiAxes, SweepDirection sweepDirection)
+		public void AddArcSegment(Point endPoint, Size semiAxes, SweepDirection sweepDirection)
 		{
-			ArcSegment segment = new ArcSegment(endPoint, semiAxes, rotationAngle, isLargeArc, sweepDirection, isStroke);
+			ArcSegment segment = new ArcSegment(endPoint, semiAxes, rotationAngle, isLargeArc, sweepDirection, isStroked);
 			AddSegment(segment);
 		}
 
 		public void AddBezierSegment(Point point1, Point point2, Point endPoint)
 		{
-			BezierSegment segment = new BezierSegment(point1, point2, endPoint, isStroke);
+			BezierSegment segment = new BezierSegment(point1, point2, endPoint, isStroked);
 			AddSegment(segment);
 		}
 
 		public void AddLineSegment(Point endPoint)
 		{
-			LineSegment segment = new LineSegment(endPoint, isStroke);
+			LineSegment segment = new LineSegment(endPoint, isStroked);
 			AddSegment(segment);
 		}
 	}
