@@ -12,11 +12,15 @@ namespace grEd
 		public MainWindow()
 		{
 			InitializeComponent();
+			Figures.Initialize(Canvas);
+		}
 
-			Figure figure = new Figure();
-			figure.Draw(Canvas);
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			Figure figure = new Figure(new Point(15, 100));
+			figure.AddLineSegment(new Point(100,14));
 
-			//Canvas.Children.Add(figure.path);
+			Figures.Add(figure);
 		}
 	}
 }

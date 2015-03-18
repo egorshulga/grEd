@@ -1,37 +1,47 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
-using System.Windows.Shapes;
 
 namespace grEd
 {
 	class Figure
 	{
-		private readonly Path path = new Path();
-		private readonly PathGeometry pathGeometry = new PathGeometry();
-		private readonly PathFigure pathFigure = new PathFigure();
+		internal readonly PathFigure pathFigure = new PathFigure();
 
+		private const bool isStroke = true;
+		private const double rotationAngle = 0;
+		private const bool isLargeArc = false;
 
-		public Figure()
+		public Figure(Point startPoint)
 		{
-			pathFigure.StartPoint = new Point(10, 10);
-
-			BezierSegment segment = new BezierSegment(new Point(100, 10), new Point(10, 100), new Point(100, 100), true);
-//			LineSegment segment = new LineSegment(new Point(100,100),true );
-
-			pathFigure.Segments = new PathSegmentCollection {segment};
-
-			pathGeometry.Figures = new PathFigureCollection {pathFigure};
-
-			
-			path.Data = pathGeometry;
-			path.Stroke = Brushes.Black;
+			pathFigure.StartPoint = startPoint;
 		}
 
-
-		public void Draw(Panel canvas)
+		private void AddSegment(PathSegment segment)
 		{
-			canvas.Children.Add(path);
+			pathFigure.Segments.Add(segment);
+		}
+
+		internal void AddArcSegment(Point endPoint, Size semiAxes, SweepDirection sweepDirection)
+		{
+			ArcSegment segment = new ArcSegment(endPoint, semiAxes, rotationAngle, isLargeArc, sweepDirection, isStroke);
+			AddSegment(segment);
+		}
+
+		public void AddBezierSegment(Point point1, Point point2, Point endPoint)
+		{
+			BezierSegment segment = new BezierSegment(point1, point2, endPoint, isStroke);
+			AddSegment(segment);
+		}
+
+		public void AddLineSegment(Point endPoint)
+		{
+			LineSegment segment = new LineSegment(endPoint, isStroke);
+			AddSegment(segment);
 		}
 	}
 }
