@@ -62,13 +62,13 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Figure.cs" />
-    <Compile Include="Figures.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Polyline.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

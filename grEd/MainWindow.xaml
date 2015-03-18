@@ -8,5 +8,6 @@
             <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
         <Canvas x:Name="Canvas" Grid.Column="0"/>
+        <Rectangle Grid.Column="1" Fill="#FFF4F4F5" Stroke="Black"/>
     </Grid>
 </Window>

@@ -7,8 +7,8 @@ namespace grEd
 {
 	class Figure
 	{
-		protected readonly Path path = new Path();
-		protected readonly PathGeometry pathGeometry = new PathGeometry();
+		private readonly Path path = new Path();
+		private readonly PathGeometry pathGeometry = new PathGeometry();
 		protected readonly PathFigure pathFigure = new PathFigure();
 
 		public Point StartPoint { get { return pathFigure.StartPoint; } set { pathFigure.StartPoint = value; } }
@@ -22,12 +22,10 @@ namespace grEd
 		private const bool isStroked = true;
 		private const double rotationAngle = 0;
 		private const bool isLargeArc = false;
-		
 
-		public Figure(Panel panel, Point startPoint)
+
+		protected Figure(Panel panel)
 		{
-			StartPoint = startPoint;
-			
 			pathGeometry.Figures.Add(pathFigure);
 			path.Data = pathGeometry;
 			panel.Children.Add(path);
@@ -46,19 +44,16 @@ namespace grEd
 		{
 			pathFigure.Segments.Add(segment);
 		}
-
 		public void AddArcSegment(Point endPoint, Size semiAxes, SweepDirection sweepDirection)
 		{
 			ArcSegment segment = new ArcSegment(endPoint, semiAxes, rotationAngle, isLargeArc, sweepDirection, isStroked);
 			AddSegment(segment);
 		}
-
 		public void AddBezierSegment(Point point1, Point point2, Point endPoint)
 		{
 			BezierSegment segment = new BezierSegment(point1, point2, endPoint, isStroked);
 			AddSegment(segment);
 		}
-
 		public void AddLineSegment(Point endPoint)
 		{
 			LineSegment segment = new LineSegment(endPoint, isStroked);
