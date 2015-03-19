@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace grEd
@@ -13,13 +14,15 @@ namespace grEd
 		public MainWindow()
 		{
 			InitializeComponent();
+		}
 
-			Polyline polyline = new Polyline(Canvas);
-			Random random = new Random();
-			for (int i = 0; i < 10; i++)
-			{
-				polyline.Add(new Point(random.Next(600), random.Next(500)));
-			}
+		private void Draw_Click(object sender, RoutedEventArgs e)
+		{
+			Polygon triangle = new Polygon(Canvas) { Fill = Brushes.Black };
+			triangle.AddPoint(60, 60);
+			triangle.AddPoint(150, 200);
+			triangle.AddPoint(350, 50);
+			triangle.Fill = Brushes.Aqua;
 		}
 	}
 }

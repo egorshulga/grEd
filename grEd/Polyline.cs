@@ -7,31 +7,36 @@ namespace grEd
 {
 	class Polyline : Figure
 	{
-		private readonly List<Point> points;
-
 		public Polyline(Panel panel) : base(panel)
-		{
-			points = new List<Point>();
-		}
-		public Polyline(Panel panel, IEnumerable<Point> pointsList) : base(panel)
-		{
-			points = new List<Point>(pointsList);
-			updateView();
-		}
+		{ }
 
-		public void Add(Point point)
-		{
-			points.Add(point);
-			updateView();
-		}
+//		public Polyline(Panel panel, IEnumerable<Point> points) : base(panel)
+//		{
+//			AddRange(points);
+//		}
 
-		private void updateView()
+		public void AddRange(IEnumerable<Point> points)
 		{
-			pathFigure.Segments.Clear();
-			StartPoint = points[0];
-			for (int i = 1; i < points.Count; i++)
+			foreach (Point point in points)
 			{
-				AddLineSegment(points[i]);
+				AddPoint(point);
+			}
+		}
+
+		public void AddPoint(double X, double Y)
+		{
+			AddPoint(new Point(X, Y));
+		}
+
+		public void AddPoint(Point point)
+		{
+			if (!IsStartPointSet)
+			{
+				StartPoint = point;
+			}
+			else
+			{
+				AddLineSegment(point);
 			}
 		}
 	}
