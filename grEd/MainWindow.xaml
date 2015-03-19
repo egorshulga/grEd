@@ -9,5 +9,6 @@
         </Grid.ColumnDefinitions>
         <Canvas x:Name="Canvas" Grid.Column="0"/>
         <Rectangle Grid.Column="1" Fill="#FFF4F4F5" Stroke="Black"/>
+        <Button x:Name="Draw" Content="Draw" Grid.Column="1" HorizontalAlignment="Left" Margin="68,44,0,0" VerticalAlignment="Top" Width="75" IsDefault="True" Click="Draw_Click"/>
     </Grid>
 </Window>
