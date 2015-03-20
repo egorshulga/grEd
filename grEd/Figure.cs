@@ -19,6 +19,7 @@ namespace grEd
 		protected internal FillRule FillRule { get { return pathGeometry.FillRule; } set { pathGeometry.FillRule = value; } }
 		protected internal bool IsClosed { get { return pathFigure.IsClosed; } set { pathFigure.IsClosed = value; } }
 		protected internal bool IsFilled { get { return pathFigure.IsFilled; } set { pathFigure.IsFilled = value; } }
+		
 
 		private const bool isStroked = true;
 		private const double rotationAngle = 0;
@@ -33,6 +34,7 @@ namespace grEd
 			panel.Children.Add(path);
 
 			Stroke = defaultBrush;
+			IsClosed = true;
 		}
 
 

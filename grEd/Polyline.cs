@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -10,10 +9,10 @@ namespace grEd
 		public Polyline(Panel panel) : base(panel)
 		{ }
 
-//		public Polyline(Panel panel, IEnumerable<Point> points) : base(panel)
-//		{
-//			AddRange(points);
-//		}
+		public Polyline(Panel panel, IEnumerable<Point> points) : base(panel)
+		{
+			AddRange(points);
+		}
 
 		public void AddRange(IEnumerable<Point> points)
 		{
@@ -23,9 +22,9 @@ namespace grEd
 			}
 		}
 
-		public void AddPoint(double X, double Y)
+		public void AddPoint(double x, double y)
 		{
-			AddPoint(new Point(X, Y));
+			AddPoint(new Point(x, y));
 		}
 
 		public void AddPoint(Point point)

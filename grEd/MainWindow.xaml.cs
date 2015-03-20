@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace grEd
@@ -22,7 +20,10 @@ namespace grEd
 			triangle.AddPoint(60, 60);
 			triangle.AddPoint(150, 200);
 			triangle.AddPoint(350, 50);
-			triangle.Fill = Brushes.Aqua;
+
+			Polygon rectangle = new Polygon(Canvas) {Fill = Brushes.SeaShell};
+			rectangle.AddRange(new List<Point> {new Point(70,70), new Point(150,30), new Point(10,200)});
+			triangle.Fill = Brushes.AntiqueWhite;
 		}
 	}
 }
