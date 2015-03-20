@@ -4,12 +4,12 @@ using System.Windows.Controls;
 
 namespace grEd
 {
-	class Polyline : Figure
+	class Polygone : Figure
 	{
-		public Polyline(Panel panel) : base(panel)
+		public Polygone(Panel panel) : base(panel)
 		{ }
 
-		public Polyline(Panel panel, IEnumerable<Point> points) : base(panel)
+		public Polygone(Panel panel, IEnumerable<Point> points) : base(panel)
 		{
 			AddRange(points);
 		}

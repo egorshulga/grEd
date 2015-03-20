@@ -34,7 +34,9 @@ namespace grEd
 			panel.Children.Add(path);
 
 			Stroke = defaultBrush;
+			IsFilled = true;
 			IsClosed = true;
+			FillRule = FillRule.Nonzero;
 		}
 
 
@@ -48,11 +50,11 @@ namespace grEd
 		{
 			pathFigure.Segments.Add(segment);
 		}
-		protected void AddArcSegment(Point endPoint, Size semiAxes, SweepDirection sweepDirection)
-		{
-			ArcSegment segment = new ArcSegment(endPoint, semiAxes, rotationAngle, isLargeArc, sweepDirection, isStroked);
-			AddSegment(segment);
-		}
+//		protected void AddArcSegment(Point endPoint, Size semiAxes, SweepDirection sweepDirection)
+//		{
+//			ArcSegment segment = new ArcSegment(endPoint, semiAxes, rotationAngle, isLargeArc, sweepDirection, isStroked);
+//			AddSegment(segment);
+//		}
 		protected void AddBezierSegment(Point point1, Point point2, Point endPoint)
 		{
 			BezierSegment segment = new BezierSegment(point1, point2, endPoint, isStroked);

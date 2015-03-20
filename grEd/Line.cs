@@ -8,15 +8,16 @@ using System.Windows.Controls;
 
 namespace grEd
 {
-	class Ellipse : Polygon
+	class Line : Polygone
 	{
+		public Line(Panel panel) : base(panel)
+		{ }
 
-
-		public Ellipse(Panel panel) : base(panel)
+		public Line(Panel panel, Point startPoint, Point endPoint) : base(panel)
 		{
-
+			AddPoint(startPoint);
+			AddPoint(endPoint);
 		}
 
-		
 	}
 }
