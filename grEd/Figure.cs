@@ -9,10 +9,10 @@ namespace grEd
 	{
 		private readonly Path path = new Path();
 		private readonly PathGeometry pathGeometry = new PathGeometry();
-		private readonly PathFigure pathFigure = new PathFigure();
+		protected readonly PathFigure pathFigure = new PathFigure();
 
 		public Point StartPoint { get { return pathFigure.StartPoint; } set { pathFigure.StartPoint = value; IsStartPointSet = true; } }
-		protected bool IsStartPointSet = false;
+		protected bool IsStartPointSet;
 		public Brush Stroke { get { return path.Stroke; } set { path.Stroke = value; } }
 		public double StrokeThickness { get { return path.StrokeThickness; } set { path.StrokeThickness = value; } }
 		public Brush Fill { get { return path.Fill; } set { path.Fill = value; } }
@@ -23,6 +23,9 @@ namespace grEd
 
 		private const bool isStroked = true;
 		private readonly Brush defaultBrush = Brushes.Black;
+		private const double rotationAngle = 0;
+		private const bool isLargeArc = true;
+
 
 
 		protected Figure(Panel panel)
@@ -53,6 +56,11 @@ namespace grEd
 		protected void AddLineSegment(Point endPoint)
 		{
 			LineSegment segment = new LineSegment(endPoint, isStroked);
+			AddSegment(segment);
+		}
+		protected void AddArcSegment(Point endPoint, Size semiAxes, SweepDirection sweepDirection = SweepDirection.Counterclockwise)
+		{
+			ArcSegment segment = new ArcSegment(endPoint, semiAxes, rotationAngle, isLargeArc, sweepDirection, isStroked);
 			AddSegment(segment);
 		}
 		private void AddSegment(PathSegment segment)

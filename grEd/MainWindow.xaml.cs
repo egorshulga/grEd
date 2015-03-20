@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Media;
+﻿using System.Windows;
 
 namespace grEd
 {
@@ -16,14 +14,8 @@ namespace grEd
 
 		private void Draw_Click(object sender, RoutedEventArgs e)
 		{
-			Polygon triangle = new Polygon(Canvas) { Fill = Brushes.Black };
-			triangle.AddPoint(60, 60);
-			triangle.AddPoint(150, 200);
-			triangle.AddPoint(350, 50);
-
-			Polygon rectangle = new Polygon(Canvas) {Fill = Brushes.SeaShell};
-			rectangle.AddRange(new List<Point> {new Point(70,70), new Point(150,30), new Point(10,200)});
-			triangle.Fill = Brushes.AntiqueWhite;
+			var rect = new Triangle(Canvas, new Point(15, 20), new Point(200, 300), new Point(150, 30));
 		}
+
 	}
 }
