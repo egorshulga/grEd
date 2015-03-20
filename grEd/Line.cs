@@ -18,6 +18,6 @@ namespace grEd
 			AddPoint(startPoint);
 			AddPoint(endPoint);
 		}
-
+		
 	}
 }
