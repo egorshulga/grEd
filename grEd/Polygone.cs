@@ -6,9 +6,6 @@ namespace grEd
 {
 	class Polygone : Figure
 	{
-		public Polygone(Panel panel) : base(panel)
-		{ }
-
 		public Polygone(Panel panel, IEnumerable<Point> points) : base(panel)
 		{
 			AddRange(points);

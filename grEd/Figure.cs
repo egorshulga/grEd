@@ -9,7 +9,7 @@ namespace grEd
 	{
 		private readonly Path path = new Path();
 		private readonly PathGeometry pathGeometry = new PathGeometry();
-		protected internal readonly PathFigure pathFigure = new PathFigure();
+		private readonly PathFigure pathFigure = new PathFigure();
 
 		public Point StartPoint { get { return pathFigure.StartPoint; } set { pathFigure.StartPoint = value; IsStartPointSet = true; } }
 		protected bool IsStartPointSet;
