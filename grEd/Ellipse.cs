@@ -7,8 +7,8 @@ namespace grEd
 {
 	class Ellipse : Figure
 	{
-		private ArcSegment segment1;
-		private ArcSegment segment2;
+		private readonly ArcSegment segment1;
+		private readonly ArcSegment segment2;
 		public Point EntryPoint;
 		public Point ExitPoint
 		{
@@ -34,6 +34,7 @@ namespace grEd
 		private Point EndPoint;
 		private Size size = new Size();
 
+
 		public Ellipse(Panel panel, Point entryPoint, Point exitPoint) : base(panel)
 		{
 			EntryPoint = entryPoint;
@@ -41,11 +42,6 @@ namespace grEd
 
 			segment1 = AddArcSegment(EndPoint, size);
 			segment2 = AddArcSegment(StartPoint, size);
-
-//			segment1.Point = EndPoint;
-//			segment2.Point = StartPoint;
-//			segment1.Size = size;
-//			segment2.Size = size;
 		}
 	}
 }
