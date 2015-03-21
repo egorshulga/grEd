@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Media;
 
 namespace grEd
 {
@@ -14,7 +15,7 @@ namespace grEd
 
 		private void Draw_Click(object sender, RoutedEventArgs e)
 		{
-			var rect = new Triangle(Canvas, new Point(15, 20), new Point(200, 300), new Point(150, 30));
+
 		}
 
 	}

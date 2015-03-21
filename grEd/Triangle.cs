@@ -3,13 +3,13 @@ using System.Windows.Controls;
 
 namespace grEd
 {
-	class Triangle : Figure
+	class Triangle : Polygone
 	{
 		public Triangle(Panel panel, Point startPoint, Point point1, Point point2) : base(panel)
 		{
-			StartPoint = startPoint;
-			AddLineSegment(point1);
-			AddLineSegment(point2);
+			AddPoint(startPoint);
+			AddPoint(point1);
+			AddPoint(point2);
 		}
 	}
 }

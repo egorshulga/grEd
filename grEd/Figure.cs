@@ -9,7 +9,7 @@ namespace grEd
 	{
 		private readonly Path path = new Path();
 		private readonly PathGeometry pathGeometry = new PathGeometry();
-		protected readonly PathFigure pathFigure = new PathFigure();
+		protected internal readonly PathFigure pathFigure = new PathFigure();
 
 		public Point StartPoint { get { return pathFigure.StartPoint; } set { pathFigure.StartPoint = value; IsStartPointSet = true; } }
 		protected bool IsStartPointSet;
@@ -47,22 +47,27 @@ namespace grEd
 		}
 
 
-		protected void AddBezierSegment(Point point1, Point point2, Point endPoint)
+		protected BezierSegment AddBezierSegment(Point point1, Point point2, Point endPoint)
 		{
 			BezierSegment segment = new BezierSegment(point1, point2, endPoint, isStroked);
 			AddSegment(segment);
+			return segment;
 		}
 
-		protected void AddLineSegment(Point endPoint)
+		protected LineSegment AddLineSegment(Point endPoint)
 		{
 			LineSegment segment = new LineSegment(endPoint, isStroked);
 			AddSegment(segment);
+			return segment;
 		}
-		protected void AddArcSegment(Point endPoint, Size semiAxes, SweepDirection sweepDirection = SweepDirection.Counterclockwise)
+
+		protected ArcSegment AddArcSegment(Point endPoint, Size semiAxes, SweepDirection sweepDirection = SweepDirection.Counterclockwise)
 		{
 			ArcSegment segment = new ArcSegment(endPoint, semiAxes, rotationAngle, isLargeArc, sweepDirection, isStroked);
 			AddSegment(segment);
+			return segment;
 		}
+
 		private void AddSegment(PathSegment segment)
 		{
 			pathFigure.Segments.Add(segment);

@@ -7,9 +7,9 @@ namespace grEd
 	{
 		public RightTriangle(Panel panel, Point entryPoint, Point exitPoint) : base(panel)
 		{
-			StartPoint = entryPoint;
-			AddLineSegment(new Point(entryPoint.X, exitPoint.Y));
-			AddLineSegment(exitPoint);
+			AddPoint(entryPoint);
+			AddPoint(new Point(entryPoint.X, exitPoint.Y));
+			AddPoint(exitPoint);
 		}
 
 	}

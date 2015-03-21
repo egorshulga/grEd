@@ -7,7 +7,7 @@ namespace grEd
 	{
 		public Rectangle(Panel panel, Point entryPoint, Point exitPoint) : base(panel, entryPoint, exitPoint)
 		{
-			AddLineSegment(new Point(exitPoint.X, entryPoint.Y));
+			AddPoint(new Point(exitPoint.X, entryPoint.Y));
 		}
 	}
 }
