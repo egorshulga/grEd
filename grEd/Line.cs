@@ -5,6 +5,7 @@ namespace grEd
 {
 	class Line : Polygone
 	{
+
 		public Line(Panel panel) : base(panel)
 		{ }
 
