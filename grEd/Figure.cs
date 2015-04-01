@@ -38,11 +38,15 @@ namespace grEd
 			fillRule = FillRule.Nonzero;
 		}
 
-		public void drawItOn(Panel panel)
+		public void DrawItOn(Panel panel)
 		{
 			panel.Children.Add(path);
 		}
 
+		public void RemoveFrom(Panel panel)
+		{
+			panel.Children.Remove(path);
+		}
 
 		public Point position
 		{

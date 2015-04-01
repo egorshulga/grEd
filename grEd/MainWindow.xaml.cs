@@ -19,6 +19,7 @@ namespace grEd
 			drawFigures();
 		}
 
+//		FiguresList figuresList;
 		void drawFigures()
 		{
 			var line = new Line( new Point(10, 10), new Point(400, 350)) { stroke = Brushes.Aqua };
@@ -47,6 +48,16 @@ namespace grEd
 			{
 				fill = Brushes.Coral
 			};
+
+			var figuresList = new FiguresList(Canvas);
+			figuresList.Add(line);
+			figuresList.Add(ellipse);
+			figuresList.Add(curve);
+			figuresList.Add(polygone);
+			figuresList.Add(triangle);
+			figuresList.Add(rightTriangle);
+			figuresList.Add(rectangle);
+			figuresList = null;
 		}
 
 	}
