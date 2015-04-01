@@ -35,7 +35,7 @@ namespace grEd
 		private Size size;
 
 
-		public Ellipse(Panel panel, Point entryPoint, Point exitPoint) : base(panel)
+		public Ellipse(Point entryPoint, Point exitPoint)
 		{
 			this.entryPoint = entryPoint;
 			this.exitPoint = exitPoint;

@@ -9,13 +9,7 @@ namespace grEd
 		private readonly LineSegment segment;
 		public Point endPoint { set { segment.Point = value; } }
 
-		public Line(Panel panel, Point startPoint, Point endPoint)
-			: base(panel)
-		{
-			this.startPoint = startPoint;
-			segment = addLineSegment(endPoint);
-			this.endPoint = endPoint;
-		}
+
 		public Line(Point startPoint, Point endPoint) : base()
 		{
 			this.startPoint = startPoint;

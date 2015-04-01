@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace grEd
@@ -8,21 +7,21 @@ namespace grEd
 	{
 		private LineSegment segment3;
 
-		public override Point ExitPoint
+		public override sealed Point exitPoint
 		{
 			set
 			{
-				segment1.Point = new Point(StartPoint.X, value.Y);
+				segment1.Point = new Point(startPoint.X, value.Y);
 				segment2.Point = value;
-				segment3.Point = new Point(value.X, StartPoint.Y);
+				segment3.Point = new Point(value.X, startPoint.Y);
 			}
 		}
 
-		public Rectangle(Panel panel, Point entryPoint, Point exitPoint) : base(panel, entryPoint, exitPoint)
+		public Rectangle(Point entryPoint, Point exitPoint) : base(entryPoint, exitPoint)
 		{
-			StartPoint = entryPoint;
-			segment3 = AddLineSegment(new Point(exitPoint.X, entryPoint.Y));
-			ExitPoint = exitPoint;
+			startPoint = entryPoint;
+			segment3 = addLineSegment(new Point(exitPoint.X, entryPoint.Y));
+			this.exitPoint = exitPoint;
 		}
 	}
 }

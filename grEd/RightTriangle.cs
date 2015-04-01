@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace grEd
@@ -9,24 +8,22 @@ namespace grEd
 		protected LineSegment segment1;
 		protected LineSegment segment2;
 
-		public Point EntryPoint { set { StartPoint = value; } }
-		public virtual Point ExitPoint
+		public Point entryPoint { set { startPoint = value; } }
+		public virtual Point exitPoint
 		{
 			set
 			{
-				segment1.Point = new Point(StartPoint.X, value.Y);
+				segment1.Point = new Point(startPoint.X, value.Y);
 				segment2.Point = value;
 			}
 		}
 
-		public RightTriangle(Panel panel, Point entryPoint, Point exitPoint) : base(panel)
+		public RightTriangle(Point entryPoint, Point exitPoint) 
 		{
-			EntryPoint = entryPoint;
+			this.entryPoint = entryPoint;
 
-			segment1 = AddLineSegment(new Point(entryPoint.X, exitPoint.Y));
-			segment2 = AddLineSegment(exitPoint);
-
-//			ExitPoint = exitPoint;
+			segment1 = addLineSegment(new Point(entryPoint.X, exitPoint.Y));
+			segment2 = addLineSegment(exitPoint);
 		}
 
 	}

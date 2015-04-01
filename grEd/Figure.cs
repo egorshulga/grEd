@@ -27,12 +27,6 @@ namespace grEd
 		private const bool isLargeArc = true;
 
 
-
-		protected Figure(Panel panel) : this()
-		{
-			drawItOn(panel);
-		}
-
 		protected Figure()
 		{
 			pathGeometry.Figures.Add(pathFigure);
