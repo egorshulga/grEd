@@ -9,39 +9,39 @@ namespace grEd
 	{
 		private readonly ArcSegment segment1;
 		private readonly ArcSegment segment2;
-		public Point EntryPoint;
-		public Point ExitPoint
+		public Point entryPoint;
+		public Point exitPoint
 		{
 			set
 			{
-				StartPoint = new Point((EntryPoint.X + value.X) / 2, EntryPoint.Y );
-				EndPoint = new Point(StartPoint.X, value.Y);
-				size.Width = Math.Abs((StartPoint.X - EntryPoint.X));
-				size.Height = Math.Abs(EndPoint.Y - EntryPoint.Y)/2;
+				startPoint = new Point((entryPoint.X + value.X) / 2, entryPoint.Y );
+				endPoint = new Point(startPoint.X, value.Y);
+				size.Width = Math.Abs((startPoint.X - entryPoint.X));
+				size.Height = Math.Abs(endPoint.Y - entryPoint.Y)/2;
 
 				if (segment1 != null)
 				{
-					segment1.Point = EndPoint;
+					segment1.Point = endPoint;
 					segment1.Size = size;
 				}
 				if (segment2 != null)
 				{
-					segment2.Point = StartPoint;
+					segment2.Point = startPoint;
 					segment2.Size = size;
 				}
 			}
 		}
-		private Point EndPoint;
-		private Size size = new Size();
+		private Point endPoint;
+		private Size size;
 
 
 		public Ellipse(Panel panel, Point entryPoint, Point exitPoint) : base(panel)
 		{
-			EntryPoint = entryPoint;
-			ExitPoint = exitPoint;
+			this.entryPoint = entryPoint;
+			this.exitPoint = exitPoint;
 
-			segment1 = AddArcSegment(EndPoint, size);
-			segment2 = AddArcSegment(StartPoint, size);
+			segment1 = addArcSegment(endPoint, size);
+			segment2 = addArcSegment(startPoint, size);
 		}
 	}
 }

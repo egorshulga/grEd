@@ -6,12 +6,15 @@ namespace grEd
 {
 	class Polygone : Figure
 	{
+		protected Polygone(Panel panel) : base(panel)
+		{ }
+		
 		public Polygone(Panel panel, IEnumerable<Point> points) : base(panel)
 		{
-			AddRange(points);
+			addRange(points);
 		}
 
-		public void AddRange(IEnumerable<Point> points)
+		public void addRange(IEnumerable<Point> points)
 		{
 			foreach (Point point in points)
 			{
@@ -26,13 +29,13 @@ namespace grEd
 
 		public void AddPoint(Point point)
 		{
-			if (!IsStartPointSet)
+			if (!isStartPointSet)
 			{
-				StartPoint = point;
+				startPoint = point;
 			}
 			else
 			{
-				AddLineSegment(point);
+				addLineSegment(point);
 			}
 		}
 	}

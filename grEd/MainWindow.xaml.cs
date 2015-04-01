@@ -46,7 +46,7 @@ namespace grEd
 			var rectangle = new Rectangle(Canvas, new Point(375, 20), new Point(500, 307))
 			{
 				Fill = Brushes.Coral
-			};			
+			};
 		}
 
 	}

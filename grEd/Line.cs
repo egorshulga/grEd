@@ -6,14 +6,21 @@ namespace grEd
 {
 	class Line : Polygone
 	{
-		private LineSegment segment;
-		public Point EndPoint { set { segment.Point = value; } }
+		private readonly LineSegment segment;
+		public Point endPoint { set { segment.Point = value; } }
 
-		public Line(Panel panel, Point startPoint, Point endPoint) : base(panel)
+		public Line(Panel panel, Point startPoint, Point endPoint)
+			: base(panel)
 		{
-			StartPoint = startPoint;
-			segment = AddLineSegment(endPoint);
-			EndPoint = endPoint;
+			this.startPoint = startPoint;
+			segment = addLineSegment(endPoint);
+			this.endPoint = endPoint;
+		}
+		public Line(Point startPoint, Point endPoint) : base()
+		{
+			this.startPoint = startPoint;
+			segment = addLineSegment(endPoint);
+			this.endPoint = endPoint;
 		}
 		
 	}

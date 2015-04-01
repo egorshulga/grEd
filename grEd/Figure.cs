@@ -11,14 +11,14 @@ namespace grEd
 		private readonly PathGeometry pathGeometry = new PathGeometry();
 		private readonly PathFigure pathFigure = new PathFigure();
 
-		public Point StartPoint { get { return pathFigure.StartPoint; } set { pathFigure.StartPoint = value; IsStartPointSet = true; } }
-		protected bool IsStartPointSet;
-		public Brush Stroke { get { return path.Stroke; } set { path.Stroke = value; } }
-		public double StrokeThickness { get { return path.StrokeThickness; } set { path.StrokeThickness = value; } }
-		public Brush Fill { get { return path.Fill; } set { path.Fill = value; } }
-		public FillRule FillRule { get { return pathGeometry.FillRule; } set { pathGeometry.FillRule = value; } }
-		public bool IsClosed { get { return pathFigure.IsClosed; } set { pathFigure.IsClosed = value; } }
-		public bool IsFilled { get { return pathFigure.IsFilled; } set { pathFigure.IsFilled = value; } }
+		public Point startPoint { get { return pathFigure.StartPoint; } set { pathFigure.StartPoint = value; isStartPointSet = true; } }
+		protected bool isStartPointSet;
+		public Brush stroke { get { return path.Stroke; } set { path.Stroke = value; } }
+		public double strokeThickness { get { return path.StrokeThickness; } set { path.StrokeThickness = value; } }
+		public Brush fill { get { return path.Fill; } set { path.Fill = value; } }
+		public FillRule fillRule { get { return pathGeometry.FillRule; } set { pathGeometry.FillRule = value; } }
+		public bool isClosed { get { return pathFigure.IsClosed; } set { pathFigure.IsClosed = value; } }
+		public bool isFilled { get { return pathFigure.IsFilled; } set { pathFigure.IsFilled = value; } }
 		
 
 		private const bool isStroked = true;
@@ -28,47 +28,56 @@ namespace grEd
 
 
 
-		protected Figure(Panel panel)
+		protected Figure(Panel panel) : this()
+		{
+			drawItOn(panel);
+		}
+
+		protected Figure()
 		{
 			pathGeometry.Figures.Add(pathFigure);
 			path.Data = pathGeometry;
-			panel.Children.Add(path);
 
-			Stroke = defaultBrush;
-			IsFilled = true;
-			IsClosed = true;
-			FillRule = FillRule.Nonzero;
+			stroke = defaultBrush;
+			isFilled = true;
+			isClosed = true;
+			fillRule = FillRule.Nonzero;
+		}
+
+		public void drawItOn(Panel panel)
+		{
+			panel.Children.Add(path);
 		}
 
 
-		public Point Position
+		public Point position
 		{
 			set { Canvas.SetLeft(path, value.X); Canvas.SetTop(path, value.Y); }
 		}
 
 
-		protected BezierSegment AddBezierSegment(Point point1, Point point2, Point endPoint)
+		protected BezierSegment addBezierSegment(Point point1, Point point2, Point endPoint)
 		{
 			BezierSegment segment = new BezierSegment(point1, point2, endPoint, isStroked);
-			AddSegment(segment);
+			addSegment(segment);
 			return segment;
 		}
 
-		protected LineSegment AddLineSegment(Point endPoint)
+		protected LineSegment addLineSegment(Point endPoint)
 		{
 			LineSegment segment = new LineSegment(endPoint, isStroked);
-			AddSegment(segment);
+			addSegment(segment);
 			return segment;
 		}
 
-		protected ArcSegment AddArcSegment(Point endPoint, Size semiAxes, SweepDirection sweepDirection = SweepDirection.Counterclockwise)
+		protected ArcSegment addArcSegment(Point endPoint, Size semiAxes, SweepDirection sweepDirection = SweepDirection.Counterclockwise)
 		{
 			ArcSegment segment = new ArcSegment(endPoint, semiAxes, rotationAngle, isLargeArc, sweepDirection, isStroked);
-			AddSegment(segment);
+			addSegment(segment);
 			return segment;
 		}
 
-		private void AddSegment(PathSegment segment)
+		private void addSegment(PathSegment segment)
 		{
 			pathFigure.Segments.Add(segment);
 		}
