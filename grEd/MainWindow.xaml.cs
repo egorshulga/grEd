@@ -12,6 +12,7 @@ namespace grEd
 		public MainWindow()
 		{
 			InitializeComponent();
+			figuresList = new FiguresList(Canvas);
 		}
 
 		private void Draw_Click(object sender, RoutedEventArgs e)
@@ -19,7 +20,7 @@ namespace grEd
 			drawFigures();
 		}
 
-//		FiguresList figuresList;
+		FiguresList figuresList;
 		void drawFigures()
 		{
 			var line = new Line( new Point(10, 10), new Point(400, 350)) { stroke = Brushes.Aqua };
@@ -49,7 +50,6 @@ namespace grEd
 				fill = Brushes.Coral
 			};
 
-			var figuresList = new FiguresList(Canvas);
 			figuresList.Add(line);
 			figuresList.Add(ellipse);
 			figuresList.Add(curve);
@@ -57,7 +57,10 @@ namespace grEd
 			figuresList.Add(triangle);
 			figuresList.Add(rightTriangle);
 			figuresList.Add(rectangle);
-			
+		}
+
+		private void Remove_Click(object sender, RoutedEventArgs e)
+		{
 			figuresList.Dispose();
 		}
 

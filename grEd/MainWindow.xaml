@@ -10,5 +10,6 @@
         <Canvas x:Name="Canvas" Grid.Column="0" SnapsToDevicePixels="True"/>
         <Rectangle Grid.Column="1" Fill="#FFF4F4F5" Stroke="Black"/>
         <Button x:Name="DrawButton" Content="Draw" Grid.Column="1" HorizontalAlignment="Left" Margin="68,44,0,0" VerticalAlignment="Top" Width="75" IsDefault="True" Click="Draw_Click"/>
+        <Button x:Name="Remove" Content="Remove" Grid.Column="1" HorizontalAlignment="Left" Margin="68,133,0,0" VerticalAlignment="Top" Width="74" Click="Remove_Click"/>
     </Grid>
 </Window>
