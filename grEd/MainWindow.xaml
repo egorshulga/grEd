@@ -5,11 +5,36 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
-        <Canvas x:Name="Canvas" Grid.Column="0" SnapsToDevicePixels="True"/>
+        <Canvas x:Name="Canvas" Grid.Column="0" SnapsToDevicePixels="True" Grid.ColumnSpan="2" Margin="584,230,-334,-230"/>
         <Rectangle Grid.Column="1" Fill="#FFF4F4F5" Stroke="Black"/>
-        <Button x:Name="DrawButton" Content="Draw" Grid.Column="1" HorizontalAlignment="Left" Margin="68,44,0,0" VerticalAlignment="Top" Width="75" IsDefault="True" Click="Draw_Click"/>
-        <Button x:Name="Remove" Content="Remove" Grid.Column="1" HorizontalAlignment="Left" Margin="68,133,0,0" VerticalAlignment="Top" Width="74" Click="Remove_Click"/>
+        <Grid Grid.Column="1" ShowGridLines="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200*"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="250*"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="Close" Content="Close" HorizontalAlignment="Right" Margin="0,0,10,10" Grid.Row="3" VerticalAlignment="Bottom" Width="75" IsCancel="True" Click="Close_Click"/>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Stroke color" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label Content="Stroke thickness" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label Content="Fill color" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top"/>
+                <Label Content="Fill rule" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top"/>
+                <ComboBox x:Name="strokeColorBox" HorizontalAlignment="Center" Margin="0,21,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding colorsList}" SelectedItem="{Binding selectedStrokeColor}"/>
+                <ComboBox x:Name="fillRuleBox" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Grid.Row="1" Margin="0,20,5,0" ItemsSource="{Binding fillRules}" SelectedItem="{Binding selectedFillRule}"/>
+                <ComboBox x:Name="strokeThicknessBox" Grid.Column="1" HorizontalAlignment="Left" Margin="0,21,0,0" VerticalAlignment="Top" Width="120"  ItemsSource="{Binding thicknessesList}" SelectedItem="{Binding selectedStrokeThickness}"/>
+                <ComboBox x:Name="fillColorBox" HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" ItemsSource="{Binding colorsList}" SelectedItem="{Binding selectedFillColor}"/>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
