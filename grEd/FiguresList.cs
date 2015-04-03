@@ -1,19 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace grEd
 {
 	class FiguresList
 	{
 		private Panel panel;
-		private UIElementCollection panelsChildren;
 
 		private readonly List<Figure> figures = new List<Figure>();
 
 		public FiguresList(Panel panel)
 		{
 			this.panel = panel;
-			panelsChildren = panel.Children;
 		}
 
 		public void SetPanel(Panel panel)
@@ -34,13 +36,19 @@ namespace grEd
 
 		public Figure this[int index] { get { return figures[index]; } set { figures[index] = value; } }
 
-		~FiguresList()
+//		~FiguresList()
+//		{
+//			Dispose();		//не работает
+//		}
+
+		public void Dispose()
 		{
 			foreach (var figure in figures)
 			{
-				figure.RemoveFrom(panelsChildren);   //не может получить доступ
-			}					//походу, дело в том, что GB работает в отдельном потоке
-								//и диспетчер запрещает ему получать доступ к Canvas.Children
+				figure.RemoveFrom(panel);
+			}
 		}
+
+		
 	}
 }

@@ -57,7 +57,8 @@ namespace grEd
 			figuresList.Add(triangle);
 			figuresList.Add(rightTriangle);
 			figuresList.Add(rectangle);
-			figuresList = null;
+			
+			figuresList.Dispose();
 		}
 
 	}
