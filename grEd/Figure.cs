@@ -43,9 +43,9 @@ namespace grEd
 			panel.Children.Add(path);
 		}
 
-		public void RemoveFrom(Panel panel)
+		public void RemoveFrom(UIElementCollection panelsChildren)
 		{
-			panel.Children.Remove(path);
+			panelsChildren.Remove(path);
 		}
 
 		public Point position
