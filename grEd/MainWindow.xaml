@@ -8,7 +8,7 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
-        <Canvas x:Name="Canvas" Grid.Column="0" SnapsToDevicePixels="True" Grid.ColumnSpan="2" Margin="584,230,-334,-230"/>
+        <Canvas x:Name="Canvas" Grid.Column="0" SnapsToDevicePixels="True"/>
         <Rectangle Grid.Column="1" Fill="#FFF4F4F5" Stroke="Black"/>
         <Grid Grid.Column="1" ShowGridLines="True">
             <Grid.RowDefinitions>
@@ -37,7 +37,7 @@
                 <ComboBox x:Name="fillColorBox" HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" ItemsSource="{Binding colorsList}" SelectedItem="{Binding (grEd:MainWindow.selectedFillColor)}"/>
             </Grid>
         </Grid>
-        <Button x:Name="drawLine" Content="Line" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="drawLine" Content="Line" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="drawLine_Click"/>
         <Button x:Name="drawCurve" Content="Curve" Grid.Column="1" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="drawEllipse" Content="Ellipse" Grid.Column="1" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="drawTriangle" Content="Triangle" Grid.Column="1" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Width="75"/>
