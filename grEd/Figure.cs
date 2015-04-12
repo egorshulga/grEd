@@ -5,7 +5,7 @@ using System.Windows.Shapes;
 
 namespace grEd
 {
-	class Figure
+	public class Figure
 	{
 		private readonly Path path = new Path();
 		private readonly PathGeometry pathGeometry = new PathGeometry();
@@ -38,12 +38,12 @@ namespace grEd
 			fillRule = FillRule.Nonzero;
 		}
 
-		public void DrawItOn(Panel panel)
+		public void drawItOn(Panel panel)
 		{
 			panel.Children.Add(path);
 		}
 
-		public void RemoveFrom(Panel panel)
+		public void removeFrom(Panel panel)
 		{
 			panel.Children.Remove(path);
 		}

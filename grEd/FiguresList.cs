@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Windows;
+﻿using System.Collections.Generic;
 using System.Windows.Controls;
-using System.Windows.Threading;
 
 namespace grEd
 {
@@ -11,44 +7,50 @@ namespace grEd
 	{
 		private Panel panel;
 
-		private readonly List<Figure> figures = new List<Figure>();
+		internal readonly List<Figure> figures = new List<Figure>();
 
 		public FiguresList(Panel panel)
 		{
 			this.panel = panel;
 		}
 
-		public void SetPanel(Panel panel)
+		public void setPanel(Panel panel)
 		{
 			this.panel = panel;
 			foreach (var figure in figures)
 			{
-				figure.DrawItOn(panel);
+				figure.drawItOn(panel);
 			}
 
 		}
 
-		public void Add(Figure figure)
+		public void add(Figure figure)
 		{
 			figures.Add(figure);
-			figure.DrawItOn(panel);
+			figure.drawItOn(panel);
 		}
 
 		public Figure this[int index] { get { return figures[index]; } set { figures[index] = value; } }
 
 //		~FiguresList()
 //		{
-//			Dispose();		//не работает
-//		}
+//			Dispose();		//не работает 
+//		}					//наверное, виноват сборщик мусора, работающий в другом потоке
 
-		public void Dispose()
+		public void dispose()
 		{
 			foreach (var figure in figures)
 			{
-				figure.RemoveFrom(panel);
+				figure.removeFrom(panel);
 			}
 		}
 
-		
+		public void remove(Figure figure)
+		{
+			figure.removeFrom(panel);
+			figures.Remove(figure);
+			figure = null;
+		}
+
 	}
 }
