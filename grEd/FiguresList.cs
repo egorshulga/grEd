@@ -49,7 +49,6 @@ namespace grEd
 		{
 			figure.removeFrom(panel);
 			figures.Remove(figure);
-			figure = null;
 		}
 
 	}

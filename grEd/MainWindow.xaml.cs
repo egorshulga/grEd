@@ -16,7 +16,7 @@ namespace grEd
 	public partial class MainWindow : Window
 	{
 		private FiguresList figuresList;
-		public BindingList<Figure> figuresOnCanvas { get; set; }
+		public List<Figure> figuresOnCanvas { get; set; }
 		public Figure selectedFigure { get; set; }
 
 		public MainWindow()
@@ -24,7 +24,7 @@ namespace grEd
 			InitializeComponent();
 
 			figuresList = new FiguresList(Canvas);
-			figuresOnCanvas = new BindingList<Figure>(figuresList.figures);
+			figuresOnCanvas = figuresList.figures;
 
 			comboBoxesInitialization();
 
@@ -184,8 +184,15 @@ namespace grEd
 			if (selectedFigure != null)
 			{
 				figuresList.remove(selectedFigure);
-				figuresOnCanvas.Remove(selectedFigure);
+				//костыль, без которого не обновляется ListBox:
+				FiguresOnCanvasBox.Items.Refresh();	
 			}
+		}
+
+		private void drawButton_Click(object sender, RoutedEventArgs e)
+		{
+			dynamic figure = Activator.CreateInstance(selectedFigureToDraw);
+			figuresList.add(figure as Figure);
 		}
 
 	
