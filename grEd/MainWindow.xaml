@@ -8,7 +8,7 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
-        <Canvas x:Name="Canvas" Grid.Column="0" SnapsToDevicePixels="True" Background="White" MouseLeftButtonUp="Canvas_MouseLeftButtonUp"/>
+        <Canvas x:Name="Canvas" Grid.Column="0" SnapsToDevicePixels="True" Background="White" MouseLeftButtonUp="Canvas_MouseLeftButtonUp" MouseLeave="Canvas_MouseLeave"/>
         <Rectangle Grid.Column="1" Fill="#FFF4F4F5" Stroke="#FFABADB3"/>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>

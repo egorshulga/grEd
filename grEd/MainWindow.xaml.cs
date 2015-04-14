@@ -200,7 +200,7 @@ namespace grEd
 
 
 		private dynamic currentDrawingFigure;
-		private bool isFigureBeingDrawn = false;
+//		private bool isFigureBeingDrawn = false;
 		private void drawButton_Click(object sender, RoutedEventArgs e)
 		{
 			dynamic figure = Activator.CreateInstance(selectedFigureTypeToDraw);
@@ -209,15 +209,23 @@ namespace grEd
 			FiguresOnCanvasBox.Items.Refresh();	
 
 			currentDrawingFigure = figure;
-			isFigureBeingDrawn = true;
+//			isFigureBeingDrawn = true;
 		}
 
 		private void Canvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
-			if ((currentDrawingFigure != null) && (isFigureBeingDrawn))
+			if ((currentDrawingFigure != null) && (!currentDrawingFigure.isFigureFinished()))
 			{
 				currentDrawingFigure.mouseDrawHandler(Mouse.GetPosition(Canvas));
-				isFigureBeingDrawn = !currentDrawingFigure.isFigureFinished();
+//				isFigureBeingDrawn = !currentDrawingFigure.isFigureFinished();
+			}
+		}
+
+		private void Canvas_MouseLeave(object sender, MouseEventArgs e)
+		{
+			if ((currentDrawingFigure != null) && (!currentDrawingFigure.isFigureFinished()))
+			{
+				currentDrawingFigure.stopDrawing();
 			}
 		}
 

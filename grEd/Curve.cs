@@ -24,11 +24,11 @@ namespace grEd
 		public Curve()
 		{
 			isClosed = false;
-			segment = addBezierSegment(zeroPoint, zeroPoint, zeroPoint);
+			segment = addBezierSegment(zeroPoint, zeroPoint, zeroPoint);	//мне надо чем-то проинициализировать эти точки
 		}
 
 
-		enum PointType { startPoint, endPoint, point1, point2, lastElement}
+		enum PointType { startPoint, endPoint, point1, point2, stopDrawing}
 		PointType selector = PointType.startPoint;
 		public override void mouseDrawHandler(Point point)
 		{
@@ -52,7 +52,12 @@ namespace grEd
 
 		public override bool isFigureFinished()
 		{
-			return selector >= PointType.lastElement;
+			return selector >= PointType.stopDrawing;
+		}
+
+		public override void stopDrawing()
+		{
+			selector = PointType.stopDrawing;
 		}
 	}
 }

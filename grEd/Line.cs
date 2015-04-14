@@ -21,7 +21,7 @@ namespace grEd
 		{ }
 
 
-		enum PointType { startPoint, endPoint, lastElement }
+		enum PointType { startPoint, endPoint, stopDrawing }
 		private PointType selector = PointType.startPoint;
 		public override void mouseDrawHandler(Point point)
 		{
@@ -42,11 +42,14 @@ namespace grEd
 			}
 			selector++;
 		}
-
 		public override bool isFigureFinished()
 		{
-			return selector >= PointType.lastElement;
+			return selector >= PointType.stopDrawing;
 		}
 
+		public override void stopDrawing()
+		{
+			selector = PointType.stopDrawing;
+		}
 	}
 }

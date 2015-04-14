@@ -44,7 +44,18 @@ namespace grEd
 
 
 
-
-
+		private bool stopDrawingPolygone;
+		public override void mouseDrawHandler(Point point)
+		{
+			addPoint(point);
+		}
+		public override void stopDrawing()
+		{
+			stopDrawingPolygone = true;
+		}
+		public override bool isFigureFinished()
+		{
+			return stopDrawingPolygone;
+		}
 	}
 }

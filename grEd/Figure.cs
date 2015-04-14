@@ -90,11 +90,10 @@ namespace grEd
 
 		public virtual void mouseDrawHandler(Point point)
 		{ }
-
 		public virtual bool isFigureFinished()
-		{
-			return true;
-		}
+		{ return true; }
+		public virtual void stopDrawing()
+		{ }
 
 		protected Point zeroPoint = new Point();
 	}
