@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace grEd
@@ -98,7 +99,7 @@ namespace grEd
 		public FillRule selectedFillRule { get; set; }
 		public int selectedStrokeThickness { get; set; }
 		public List<Type> availableFiguresToDraw { get; set; }
-		public Type selectedFigureToDraw { get; set; }
+		public Type selectedFigureTypeToDraw { get; set; }
 		private void colorsListInitialization()
 		{
 			colorsList = new List<SolidColorBrush>();
@@ -115,8 +116,9 @@ namespace grEd
 		}
 		private void thicknessesListInitialization()
 		{
+			const int maxThickness = 30;
 			thicknessesList = new List<int>();
-			for (int i = 1; i < 10; i++)
+			for (int i = 1; i < maxThickness; i++)
 				thicknessesList.Add(i);
 		}
 		private void fillRulesInitialization()
@@ -188,12 +190,38 @@ namespace grEd
 				FiguresOnCanvasBox.Items.Refresh();	
 			}
 		}
+		private void FiguresOnCanvasBox_KeyUp(object sender, KeyEventArgs e)
+		{
+			if (e.Key == Key.Delete)
+			{
+				removeButton_Click(sender, e);
+			}
+		}
 
+
+		private dynamic currentDrawingFigure;
+		private bool isFigureBeingDrawn = false;
 		private void drawButton_Click(object sender, RoutedEventArgs e)
 		{
-			dynamic figure = Activator.CreateInstance(selectedFigureToDraw);
+			dynamic figure = Activator.CreateInstance(selectedFigureTypeToDraw);
+
 			figuresList.add(figure as Figure);
+			FiguresOnCanvasBox.Items.Refresh();	
+
+			currentDrawingFigure = figure;
+			isFigureBeingDrawn = true;
 		}
+
+		private void Canvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			if ((currentDrawingFigure != null) && (isFigureBeingDrawn))
+			{
+				currentDrawingFigure.mouseDrawHandler(Mouse.GetPosition(Canvas));
+				isFigureBeingDrawn = !currentDrawingFigure.isFigureFinished();
+			}
+		}
+
+
 
 	
 	}

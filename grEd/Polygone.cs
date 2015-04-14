@@ -41,5 +41,10 @@ namespace grEd
 				addLineSegment(point);
 			}
 		}
+
+
+
+
+
 	}
 }

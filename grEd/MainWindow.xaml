@@ -8,9 +8,9 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
-        <Canvas x:Name="Canvas" Grid.Column="0" SnapsToDevicePixels="True"/>
-        <Rectangle Grid.Column="1" Fill="#FFF4F4F5" Stroke="Black"/>
-        <Grid Grid.Column="1" ShowGridLines="True">
+        <Canvas x:Name="Canvas" Grid.Column="0" SnapsToDevicePixels="True" Background="White" MouseLeftButtonUp="Canvas_MouseLeftButtonUp"/>
+        <Rectangle Grid.Column="1" Fill="#FFF4F4F5" Stroke="#FFABADB3"/>
+        <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="70"/>
                 <RowDefinition Height="250*"/>
@@ -36,10 +36,10 @@
                 <ComboBox x:Name="strokeThicknessBox" Grid.Column="1" HorizontalAlignment="Left" Margin="0,21,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding thicknessesList}" SelectedItem="{Binding (grEd:MainWindow.selectedStrokeThickness)}" SelectionChanged="strokeThicknessBox_SelectionChanged"/>
                 <ComboBox x:Name="fillColorBox" HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" ItemsSource="{Binding colorsList}" SelectedItem="{Binding (grEd:MainWindow.selectedFillColor)}" SelectionChanged="fillColorBox_SelectionChanged"/>
             </Grid>
-            <ComboBox x:Name="availableFiguresBox" VerticalAlignment="Top" Width="230" HorizontalAlignment="Center" Margin="0,10,0,0" ItemsSource="{Binding availableFiguresToDraw}" SelectedItem="{Binding (grEd:MainWindow.selectedFigureToDraw)}"/>
+            <ComboBox x:Name="availableFiguresBox" VerticalAlignment="Top" Width="230" HorizontalAlignment="Center" Margin="0,10,0,0" ItemsSource="{Binding availableFiguresToDraw}" SelectedItem="{Binding (grEd:MainWindow.selectedFigureTypeToDraw)}"/>
             <Button x:Name="drawButton" Content="Draw" HorizontalAlignment="Left" Margin="10,40,0,10" Width="75" Click="drawButton_Click"/>
             <Button x:Name="removeButton" Content="Remove" HorizontalAlignment="Left" Margin="165,40,0,0" VerticalAlignment="Top" Width="75" Click="removeButton_Click"/>
-            <ListBox x:Name="FiguresOnCanvasBox" Grid.Row="1" ItemsSource="{Binding figuresOnCanvas}" SelectedItem="{Binding (grEd:MainWindow.selectedFigure)}"/>
+            <ListBox x:Name="FiguresOnCanvasBox" Grid.Row="1" ItemsSource="{Binding figuresOnCanvas}" SelectedItem="{Binding (grEd:MainWindow.selectedFigure)}" KeyUp="FiguresOnCanvasBox_KeyUp"/>
         </Grid>
     </Grid>
 </Window>

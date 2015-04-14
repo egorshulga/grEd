@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -27,6 +28,9 @@ namespace grEd
 		private const bool isLargeArc = true;
 
 
+//		private List<Point> points;
+
+
 		protected Figure()
 		{
 			pathGeometry.Figures.Add(pathFigure);
@@ -36,6 +40,8 @@ namespace grEd
 			isFilled = true;
 			isClosed = true;
 			fillRule = FillRule.Nonzero;
+
+//			points = new List<Point> { startPoint };
 		}
 
 		public void drawItOn(Panel panel)
@@ -48,10 +54,10 @@ namespace grEd
 			panel.Children.Remove(path);
 		}
 
-		public Point position
-		{
-			set { Canvas.SetLeft(path, value.X); Canvas.SetTop(path, value.Y); }
-		}
+//		public Point position
+//		{
+//			set { Canvas.SetLeft(path, value.X); Canvas.SetTop(path, value.Y); }
+//		}
 
 
 		protected BezierSegment addBezierSegment(Point point1, Point point2, Point endPoint)
@@ -79,5 +85,17 @@ namespace grEd
 		{
 			pathFigure.Segments.Add(segment);
 		}
+
+
+
+		public virtual void mouseDrawHandler(Point point)
+		{ }
+
+		public virtual bool isFigureFinished()
+		{
+			return true;
+		}
+
+		protected Point zeroPoint = new Point();
 	}
 }
