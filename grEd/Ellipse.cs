@@ -56,7 +56,7 @@ namespace grEd
 			switch (selector)
 			{
 				case PointType.entryPoint:
-					entryPoint = exitPoint = point;
+					exitPoint = entryPoint = point;
 					segment1 = addArcSegment(endPoint, size);
 					segment2 = addArcSegment(startPoint, size);
 					break;

@@ -251,6 +251,12 @@ namespace grEd
 			}
 		}
 
+		private void clearButton_Click(object sender, RoutedEventArgs e)
+		{
+			figuresList.clear();
+			FiguresOnCanvasBox.Items.Refresh();
+		}
+
 
 	
 	}

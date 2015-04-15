@@ -53,5 +53,13 @@ namespace grEd
 			figures.Remove(figure);
 		}
 
+		public void clear()
+		{
+			foreach (var figure in figures)
+			{
+				figure.removeFrom(panel);
+			}
+			figures.Clear();
+		}
 	}
 }
