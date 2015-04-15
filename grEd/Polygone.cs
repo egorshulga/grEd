@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
+using Figure;
 
 namespace grEd
 {
-	class Polygone : Figure, IDrawable
+	class Polygone : Figure.Figure, IDrawable
 	{
 		private LineSegment lastSegment;
 		private Point lastPoint

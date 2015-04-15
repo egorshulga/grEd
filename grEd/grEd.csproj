@@ -34,6 +34,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Curve">
+      <HintPath>bin\Debug\bin\Curve.dll</HintPath>
+    </Reference>
+    <Reference Include="Figure">
+      <HintPath>..\Figure\Figure\bin\Release\Figure.dll</HintPath>
+    </Reference>
+    <Reference Include="Line">
+      <HintPath>bin\Debug\bin\Line.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -54,7 +63,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="FiguresList.cs" />
-    <Compile Include="IDrawable.cs" />
     <Compile Include="Rectangle.cs" />
     <Compile Include="RightTriangle.cs" />
     <Compile Include="Triangle.cs" />
@@ -66,10 +74,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Curve.cs" />
     <Compile Include="Ellipse.cs" />
-    <Compile Include="Figure.cs" />
-    <Compile Include="Line.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -103,6 +108,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

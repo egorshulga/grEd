@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Media;
+using Figure;
 
 namespace grEd
 {
-	class Ellipse : Figure, IDrawable
+	class Ellipse : Figure.Figure, IDrawable
 	{
 		private readonly ArcSegment segment1;
 		private readonly ArcSegment segment2;

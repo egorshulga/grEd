@@ -3,7 +3,7 @@ using System.Windows.Media;
 
 namespace grEd
 {
-	class RightTriangle : Figure
+	class RightTriangle : Figure.Figure
 	{
 		protected LineSegment segment1;
 		protected LineSegment segment2;

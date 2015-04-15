@@ -1,10 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using Figure;
 
-namespace grEd
+namespace Line
 {
-	class Line : Figure, IDrawable
+	public class Line : Figure.Figure, IDrawable
 	{
 		private LineSegment segment;
 		private Point endPoint { set { segment.Point = value; } }
