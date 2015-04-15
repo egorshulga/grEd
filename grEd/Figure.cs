@@ -86,9 +86,5 @@ namespace grEd
 			pathFigure.Segments.Add(segment);
 		}
 
-
-
-
-		protected Point zeroPoint = new Point();
 	}
 }
