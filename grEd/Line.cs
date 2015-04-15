@@ -23,7 +23,7 @@ namespace grEd
 
 		enum PointType { startPoint, endPoint, stopDrawing }
 		private PointType selector = PointType.startPoint;
-		public new void mouseDrawHandler(Point point)
+		public void mouseDrawHandler(Point point)
 		{
 			choosePointToDraw(point);
 		}
@@ -33,24 +33,29 @@ namespace grEd
 			{
 				case PointType.startPoint:
 					startPoint = point;
+					segment = addLineSegment(point);
 					break;
 				case PointType.endPoint:
-					segment = addLineSegment(point);
 					endPoint = point;
 					break;
 			}
 			selector++;
 		}
-		public new void mousePreviewHandler(Point point)
+		public void mousePreviewHandler(Point point)
 		{
-			
+			switch (selector)
+			{
+				case PointType.endPoint:
+					endPoint = point;
+					break;
+			}
 		}
-		public new bool isFigureFinished()
+		public bool isFigureFinished()
 		{
 			return selector >= PointType.stopDrawing;
 		}
 
-		public new void stopDrawing()
+		public void stopDrawing()
 		{
 			selector = PointType.stopDrawing;
 		}

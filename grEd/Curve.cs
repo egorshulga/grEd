@@ -29,14 +29,8 @@ namespace grEd
 
 
 		enum PointType { startPoint, endPoint, point1, point2, stopDrawing}
-		PointType selector = PointType.startPoint - 1;
+		PointType selector = PointType.startPoint;
 		public void mouseDrawHandler(Point point)
-		{
-			mousePreviewHandler(point);
-			selector++;
-		}
-
-		public void mousePreviewHandler(Point point)
 		{
 			switch (selector)
 			{
@@ -44,6 +38,17 @@ namespace grEd
 					startPoint = point;
 					segment = addBezierSegment(point, point, point);
 					break;
+				default:
+				mousePreviewHandler(point);
+					break;
+			}
+			selector++;
+		}
+
+		public void mousePreviewHandler(Point point)
+		{
+			switch (selector)
+			{
 				case PointType.point1:
 					point1 = point;
 					break;

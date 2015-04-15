@@ -225,13 +225,6 @@ namespace grEd
 		{
 			return ((currentDrawingFigure != null) && (!currentDrawingFigure.isFigureFinished()));
 		}
-		private void Canvas_MouseLeave(object sender, MouseEventArgs e)
-		{
-			if (isFigureBeingDrawedAndExists())
-			{
-				currentDrawingFigure.stopDrawing();
-			}
-		}
 
 		private void Canvas_MouseMove(object sender, MouseEventArgs e)
 		{
@@ -241,6 +234,13 @@ namespace grEd
 			}
 		}
 
+		private void Canvas_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			if (isFigureBeingDrawedAndExists())
+			{
+				currentDrawingFigure.stopDrawing();
+			}
+		}
 
 
 	

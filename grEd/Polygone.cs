@@ -1,10 +1,22 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Media;
 
 namespace grEd
 {
 	class Polygone : Figure, IDrawable
 	{
+		private LineSegment lastSegment;
+		private Point lastPoint
+		{
+			get { return lastSegment == null ? startPoint : lastSegment.Point; }
+			set
+			{
+				if (lastSegment == null) startPoint = value;
+				else lastSegment.Point = value;
+			}
+		}
+
 		public Polygone()
 		{
 			//it's okay
@@ -38,10 +50,9 @@ namespace grEd
 			}
 			else
 			{
-				addLineSegment(point);
+				lastSegment = addLineSegment(point);
 			}
 		}
-
 
 
 		private bool stopDrawingPolygone;
@@ -51,7 +62,7 @@ namespace grEd
 		}
 		public void mousePreviewHandler(Point point)
 		{
-			
+			lastPoint = point;
 		}
 		public void stopDrawing()
 		{
