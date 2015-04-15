@@ -7,8 +7,8 @@ namespace grEd
 {
 	class Ellipse : Figure.Figure, IDrawable
 	{
-		private readonly ArcSegment segment1;
-		private readonly ArcSegment segment2;
+		private ArcSegment segment1;
+		private ArcSegment segment2;
 		public Point entryPoint;
 		public Point exitPoint
 		{
@@ -49,21 +49,40 @@ namespace grEd
 		{ }
 
 
+		private enum PointType { entryPoint, exitPoint }
+		private PointType selector = PointType.entryPoint;
 		public void mouseDrawHandler(Point point)
 		{
-			throw new NotImplementedException();
+			switch (selector)
+			{
+				case PointType.entryPoint:
+					entryPoint = exitPoint = point;
+					segment1 = addArcSegment(endPoint, size);
+					segment2 = addArcSegment(startPoint, size);
+					break;
+				case PointType.exitPoint:
+					exitPoint = point;
+					break;
+			}
+			selector++;
 		}
 		public void mousePreviewHandler(Point point)
 		{
-			throw new NotImplementedException();
+			switch (selector)
+			{
+				case PointType.exitPoint:
+					exitPoint = point;
+					break;
+			}
 		}
 		public bool isFigureFinished()
 		{
-			throw new NotImplementedException();
+			return selector > PointType.exitPoint;
 		}
 		public void stopDrawing()
 		{
-			throw new NotImplementedException();
+			selector = PointType.exitPoint;
+			selector++;
 		}
 	}
 }

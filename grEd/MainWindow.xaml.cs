@@ -42,7 +42,7 @@ namespace grEd
 				strokeThickness = 10,
 				stroke = Brushes.Crimson
 			};
-			var polygone = new Polygone(
+			var polygone = new Polygone.Polygone(
 				new List<Point>
 				{
 					new Point(2, 200),

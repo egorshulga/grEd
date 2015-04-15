@@ -3,14 +3,18 @@ using System.Windows;
 using System.Windows.Media;
 using Figure;
 
-namespace grEd
+namespace Polygone
 {
-	class Polygone : Figure.Figure, IDrawable
+	public class Polygone : Figure.Figure, IDrawable
 	{
 		private LineSegment lastSegment;
 		private Point lastPoint
 		{
-			get { return lastSegment == null ? startPoint : lastSegment.Point; }
+			get
+			{
+				if (lastSegment == null) return startPoint;
+				else return lastSegment.Point;
+			}
 			set
 			{
 				if (lastSegment == null) startPoint = value;
