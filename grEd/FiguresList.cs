@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Windows.Controls;
 
 namespace grEd
 {
+	[SuppressMessage("ReSharper", "ParameterHidesMember")]
 	class FiguresList
 	{
 		private Panel panel;
 
-		internal readonly List<Figure> figures = new List<Figure>();
+		internal readonly List<Figure.Figure> figures = new List<Figure.Figure>();
 
 		public FiguresList(Panel panel)
 		{
@@ -24,13 +26,13 @@ namespace grEd
 
 		}
 
-		public void add(Figure figure)
+		public void add(Figure.Figure figure)
 		{
 			figures.Add(figure);
 			figure.drawItOn(panel);
 		}
 
-		public Figure this[int index] { get { return figures[index]; } set { figures[index] = value; } }
+		public Figure.Figure this[int index] { get { return figures[index]; } set { figures[index] = value; } }
 
 //		~FiguresList()
 //		{
@@ -45,7 +47,7 @@ namespace grEd
 			}
 		}
 
-		public void remove(Figure figure)
+		public void remove(Figure.Figure figure)
 		{
 			figure.removeFrom(panel);
 			figures.Remove(figure);

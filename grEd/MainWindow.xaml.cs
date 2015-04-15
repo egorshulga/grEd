@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -14,11 +15,12 @@ namespace grEd
 	/// <summary>
 	/// Логика взаимодействия для MainWindow.xaml
 	/// </summary>
-	public partial class MainWindow : Window
+	[SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
+	public partial class MainWindow
 	{
-		private FiguresList figuresList;
-		public List<Figure> figuresOnCanvas { get; set; }
-		public Figure selectedFigure { get; set; }
+		private readonly FiguresList figuresList;
+		public List<Figure.Figure> figuresOnCanvas { get; set; }
+		public Figure.Figure selectedFigure { get; set; }
 
 		public MainWindow()
 		{
@@ -132,7 +134,7 @@ namespace grEd
 			//добавляемые фигуры могут наследоваться только от класса Figure (походу и от его производных тоже)
 			availableFiguresToDraw.AddRange(AppDomain.CurrentDomain.GetAssemblies()
 				.SelectMany(assembly => assembly.GetTypes())
-				.Where(type => type.IsSubclassOf(typeof (Figure))));
+				.Where(type => type.IsSubclassOf(typeof (Figure.Figure))));
 		}
 
 
@@ -210,7 +212,7 @@ namespace grEd
 			figure.strokeThickness = selectedStrokeThickness;
 			figure.fillRule = selectedFillRule;
 
-			figuresList.add(figure as Figure);
+			figuresList.add(figure as Figure.Figure);
 			FiguresOnCanvasBox.Items.Refresh();	
 
 			currentDrawingFigure = figure;

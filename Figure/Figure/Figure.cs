@@ -11,14 +11,14 @@ namespace Figure
 		private readonly PathGeometry pathGeometry = new PathGeometry();
 		private readonly PathFigure pathFigure = new PathFigure();
 
-		protected Point startPoint { get { return pathFigure.StartPoint; } set { pathFigure.StartPoint = value; isStartPointSet = true; } }
-		protected bool isStartPointSet { get; set; }
-		protected Brush stroke { get { return path.Stroke; } set { path.Stroke = value; } }
-		protected double strokeThickness { get { return path.StrokeThickness; } set { path.StrokeThickness = value; } }
-		protected Brush fill { get { return path.Fill; } set { path.Fill = value; } }
-		protected FillRule fillRule { get { return pathGeometry.FillRule; } set { pathGeometry.FillRule = value; } }
-		protected bool isClosed { get { return pathFigure.IsClosed; } set { pathFigure.IsClosed = value; } }
-		protected bool isFilled { get { return pathFigure.IsFilled; } set { pathFigure.IsFilled = value; } }
+		public Point startPoint { get { return pathFigure.StartPoint; } set { pathFigure.StartPoint = value; isStartPointSet = true; } }
+		public bool isStartPointSet { get; set; }
+		public Brush stroke { get { return path.Stroke; } set { path.Stroke = value; } }
+		public double strokeThickness { get { return path.StrokeThickness; } set { path.StrokeThickness = value; } }
+		public Brush fill { get { return path.Fill; } set { path.Fill = value; } }
+		public FillRule fillRule { get { return pathGeometry.FillRule; } set { pathGeometry.FillRule = value; } }
+		public bool isClosed { get { return pathFigure.IsClosed; } set { pathFigure.IsClosed = value; } }
+		public bool isFilled { get { return pathFigure.IsFilled; } set { pathFigure.IsFilled = value; } }
 
 
 		private const bool isStroked = true;
