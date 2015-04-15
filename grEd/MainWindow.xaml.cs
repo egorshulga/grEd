@@ -86,7 +86,8 @@ namespace grEd
 			availableFiguresBoxInitialization();
 			DataContext = this;
 
-			selectedFillColor = selectedStrokeColor = Brushes.Black;
+			selectedStrokeColor = Brushes.Black;
+			selectedFillColor = Brushes.Transparent;
 			selectedFillRule = FillRule.Nonzero;
 			selectedStrokeThickness = 1;
 		}
@@ -215,10 +216,16 @@ namespace grEd
 			currentDrawingFigure = figure;
 		}
 
+
 		private void Canvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
 			if (isFigureBeingDrawedAndExists())
 			{
+				currentDrawingFigure.mouseDrawHandler(Mouse.GetPosition(Canvas));
+			}
+			else
+			{
+				drawButton_Click(sender, e);
 				currentDrawingFigure.mouseDrawHandler(Mouse.GetPosition(Canvas));
 			}
 		}

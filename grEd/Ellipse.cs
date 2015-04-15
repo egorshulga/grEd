@@ -4,7 +4,7 @@ using System.Windows.Media;
 
 namespace grEd
 {
-	class Ellipse : Figure
+	class Ellipse : Figure, IDrawable
 	{
 		private readonly ArcSegment segment1;
 		private readonly ArcSegment segment2;
@@ -41,6 +41,28 @@ namespace grEd
 
 			segment1 = addArcSegment(endPoint, size);
 			segment2 = addArcSegment(startPoint, size);
+		}
+
+
+		public Ellipse()
+		{ }
+
+
+		public void mouseDrawHandler(Point point)
+		{
+			throw new NotImplementedException();
+		}
+		public void mousePreviewHandler(Point point)
+		{
+			throw new NotImplementedException();
+		}
+		public bool isFigureFinished()
+		{
+			throw new NotImplementedException();
+		}
+		public void stopDrawing()
+		{
+			throw new NotImplementedException();
 		}
 	}
 }
