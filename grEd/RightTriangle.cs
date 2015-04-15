@@ -1,9 +1,10 @@
 ﻿using System.Windows;
 using System.Windows.Media;
+using Figure;
 
 namespace grEd
 {
-	class RightTriangle : Figure.Figure
+	class RightTriangle : Figure.Figure, IDrawable
 	{
 		protected LineSegment segment1;
 		protected LineSegment segment2;
@@ -26,5 +27,44 @@ namespace grEd
 			segment2 = addLineSegment(exitPoint);
 		}
 
+		public RightTriangle()
+		{ }
+
+		private enum PointType { entryPoint, exitPoint }
+		private PointType selector;
+		public void mouseDrawHandler(Point point)
+		{
+			switch (selector)
+			{
+				case PointType.entryPoint:
+					segment1 = addLineSegment(point);
+					segment2 = addLineSegment(point);
+					exitPoint = entryPoint = point;
+					break;
+				case PointType.exitPoint:
+					exitPoint = point;
+					break;
+			}
+			selector++;
+		}
+
+		public void mousePreviewHandler(Point point)
+		{
+			if (selector == PointType.exitPoint)
+			{
+				exitPoint = point;
+			}
+		}
+
+		public bool isFigureFinished()
+		{
+			return selector > PointType.exitPoint;
+		}
+
+		public void stopDrawing()
+		{
+			selector = PointType.exitPoint;
+			selector++;
+		}
 	}
 }
