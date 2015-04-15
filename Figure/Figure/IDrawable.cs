@@ -2,7 +2,7 @@
 
 namespace Figure
 {
-	interface IDrawable
+	public interface IDrawable
 	{
 		void mouseDrawHandler(Point point);
 		void mousePreviewHandler(Point point);
