@@ -1,11 +1,10 @@
-﻿using System.Collections.Concurrent;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Media;
 using Figure;
 
-namespace grEd
+namespace DefaultFigures
 {
-	class Triangle : Figure.Figure, IDrawable
+	public class Triangle : Figure.Figure, IDrawable
 	{
 		private LineSegment segment1;
 		private LineSegment segment2;

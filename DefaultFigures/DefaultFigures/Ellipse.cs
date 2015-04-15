@@ -3,9 +3,9 @@ using System.Windows;
 using System.Windows.Media;
 using Figure;
 
-namespace grEd
+namespace DefaultFigures
 {
-	class Ellipse : Figure.Figure, IDrawable
+	public class Ellipse : Figure.Figure, IDrawable
 	{
 		private ArcSegment segment1;
 		private ArcSegment segment2;
@@ -14,10 +14,10 @@ namespace grEd
 		{
 			set
 			{
-				startPoint = new Point((entryPoint.X + value.X) / 2, entryPoint.Y );
+				startPoint = new Point((entryPoint.X + value.X) / 2, entryPoint.Y);
 				endPoint = new Point(startPoint.X, value.Y);
 				size.Width = Math.Abs((startPoint.X - entryPoint.X));
-				size.Height = Math.Abs(endPoint.Y - entryPoint.Y)/2;
+				size.Height = Math.Abs(endPoint.Y - entryPoint.Y) / 2;
 
 				if (segment1 != null)
 				{

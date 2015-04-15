@@ -2,9 +2,9 @@
 using System.Windows.Media;
 using Figure;
 
-namespace grEd
+namespace DefaultFigures
 {
-	class RightTriangle : Figure.Figure, IDrawable
+	public class RightTriangle : Figure.Figure, IDrawable
 	{
 		protected LineSegment segment1;
 		protected LineSegment segment2;
@@ -30,8 +30,8 @@ namespace grEd
 		public RightTriangle()
 		{ }
 
-		private enum PointType { entryPoint, exitPoint }
-		private PointType selector;
+		protected enum PointType { entryPoint, exitPoint }
+		protected PointType selector;
 		public void mouseDrawHandler(Point point)
 		{
 			switch (selector)

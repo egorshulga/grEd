@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using DefaultFigures;
 
 namespace grEd
 {
@@ -35,14 +36,14 @@ namespace grEd
 
 		private void drawFigures()
 		{
-			var line = new Line.Line(new Point(10, 10), new Point(400, 350)) {stroke = Brushes.Aqua};
+			var line = new Line(new Point(10, 10), new Point(400, 350)) {stroke = Brushes.Aqua};
 			var ellipse = new Ellipse(new Point(55, 10), new Point(195, 100)) {fill = Brushes.Tan};
-			var curve = new Curve.Curve(new Point(5, 110), new Point(50, 90), new Point(150, 170), new Point(300, 120))
+			var curve = new Curve(new Point(5, 110), new Point(50, 90), new Point(150, 170), new Point(300, 120))
 			{
 				strokeThickness = 10,
 				stroke = Brushes.Crimson
 			};
-			var polygone = new Polygone.Polygone(
+			var polygone = new Polygone(
 				new List<Point>
 				{
 					new Point(2, 200),

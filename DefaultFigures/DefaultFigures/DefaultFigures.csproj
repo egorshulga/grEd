@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E144226F-A7C7-449C-86FD-C020193E1897}</ProjectGuid>
+    <ProjectGuid>{0A9C2D6B-6A2F-46DE-B20E-1827F1B793B4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Line</RootNamespace>
-    <AssemblyName>Line</AssemblyName>
+    <RootNamespace>DefaultFigures</RootNamespace>
+    <AssemblyName>DefaultFigures</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -44,7 +44,13 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Curve.cs" />
+    <Compile Include="Ellipse.cs" />
     <Compile Include="Line.cs" />
+    <Compile Include="Polygone.cs" />
+    <Compile Include="Rectangle.cs" />
+    <Compile Include="RightTriangle.cs" />
+    <Compile Include="Triangle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

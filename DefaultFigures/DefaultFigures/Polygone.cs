@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Media;
 using Figure;
 
-namespace Polygone
+namespace DefaultFigures
 {
 	public class Polygone : Figure.Figure, IDrawable
 	{

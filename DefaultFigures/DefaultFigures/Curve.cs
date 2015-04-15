@@ -2,7 +2,7 @@
 using System.Windows.Media;
 using Figure;
 
-namespace Curve
+namespace DefaultFigures
 {
 	public class Curve : Figure.Figure, IDrawable
 	{
