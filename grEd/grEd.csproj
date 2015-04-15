@@ -54,6 +54,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="FiguresList.cs" />
+    <Compile Include="IDrawable.cs" />
     <Compile Include="Rectangle.cs" />
     <Compile Include="RightTriangle.cs" />
     <Compile Include="Triangle.cs" />

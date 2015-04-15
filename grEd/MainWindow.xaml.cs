@@ -214,18 +214,30 @@ namespace grEd
 
 		private void Canvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
-			if ((currentDrawingFigure != null) && (!currentDrawingFigure.isFigureFinished()))
+			if (isFigureBeingDrawedAndExists())
 			{
 				currentDrawingFigure.mouseDrawHandler(Mouse.GetPosition(Canvas));
 //				isFigureBeingDrawn = !currentDrawingFigure.isFigureFinished();
 			}
 		}
 
+		private bool isFigureBeingDrawedAndExists()
+		{
+			return ((currentDrawingFigure != null) && (!currentDrawingFigure.isFigureFinished()));
+		}
 		private void Canvas_MouseLeave(object sender, MouseEventArgs e)
 		{
-			if ((currentDrawingFigure != null) && (!currentDrawingFigure.isFigureFinished()))
+			if (isFigureBeingDrawedAndExists())
 			{
 				currentDrawingFigure.stopDrawing();
+			}
+		}
+
+		private void Canvas_MouseMove(object sender, MouseEventArgs e)
+		{
+			if (isFigureBeingDrawedAndExists())
+			{
+				currentDrawingFigure.mousePreviewHandler(Mouse.GetPosition(Canvas));
 			}
 		}
 

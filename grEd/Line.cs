@@ -4,7 +4,7 @@ using System.Windows.Media;
 
 namespace grEd
 {
-	class Line : Polygone
+	class Line : Figure, IDrawable
 	{
 		private LineSegment segment;
 		private Point endPoint { set { segment.Point = value; } }
@@ -23,11 +23,10 @@ namespace grEd
 
 		enum PointType { startPoint, endPoint, stopDrawing }
 		private PointType selector = PointType.startPoint;
-		public override void mouseDrawHandler(Point point)
+		public new void mouseDrawHandler(Point point)
 		{
 			choosePointToDraw(point);
 		}
-
 		private void choosePointToDraw(Point point)
 		{
 			switch (selector)
@@ -42,12 +41,16 @@ namespace grEd
 			}
 			selector++;
 		}
-		public override bool isFigureFinished()
+		public new void mousePreviewHandler(Point point)
+		{
+			
+		}
+		public new bool isFigureFinished()
 		{
 			return selector >= PointType.stopDrawing;
 		}
 
-		public override void stopDrawing()
+		public new void stopDrawing()
 		{
 			selector = PointType.stopDrawing;
 		}

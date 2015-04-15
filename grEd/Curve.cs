@@ -4,7 +4,7 @@ using System.Windows.Media;
 
 namespace grEd
 {
-	class Curve : Figure
+	class Curve : Figure, IDrawable
 	{
 		private BezierSegment segment;
 		private Point point1 { get { return segment.Point1; } set { segment.Point1 = value; } }
@@ -24,18 +24,25 @@ namespace grEd
 		public Curve()
 		{
 			isClosed = false;
-			segment = addBezierSegment(zeroPoint, zeroPoint, zeroPoint);	//мне надо чем-то проинициализировать эти точки
+//			segment = addBezierSegment(zeroPoint, zeroPoint, zeroPoint);	//мне надо чем-то проинициализировать эти точки
 		}
 
 
 		enum PointType { startPoint, endPoint, point1, point2, stopDrawing}
-		PointType selector = PointType.startPoint;
-		public override void mouseDrawHandler(Point point)
+		PointType selector = PointType.startPoint - 1;
+		public void mouseDrawHandler(Point point)
+		{
+			mousePreviewHandler(point);
+			selector++;
+		}
+
+		public void mousePreviewHandler(Point point)
 		{
 			switch (selector)
 			{
 				case PointType.startPoint:
 					startPoint = point;
+					segment = addBezierSegment(point, point, point);
 					break;
 				case PointType.point1:
 					point1 = point;
@@ -47,15 +54,14 @@ namespace grEd
 					endPoint = point;
 					break;
 			}
-			selector++;
 		}
 
-		public override bool isFigureFinished()
+		public bool isFigureFinished()
 		{
 			return selector >= PointType.stopDrawing;
 		}
 
-		public override void stopDrawing()
+		public void stopDrawing()
 		{
 			selector = PointType.stopDrawing;
 		}

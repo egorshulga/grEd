@@ -3,7 +3,7 @@ using System.Windows;
 
 namespace grEd
 {
-	class Polygone : Figure
+	class Polygone : Figure, IDrawable
 	{
 		public Polygone()
 		{
@@ -45,15 +45,19 @@ namespace grEd
 
 
 		private bool stopDrawingPolygone;
-		public override void mouseDrawHandler(Point point)
+		public void mouseDrawHandler(Point point)
 		{
 			addPoint(point);
 		}
-		public override void stopDrawing()
+		public void mousePreviewHandler(Point point)
+		{
+			
+		}
+		public void stopDrawing()
 		{
 			stopDrawingPolygone = true;
 		}
-		public override bool isFigureFinished()
+		public bool isFigureFinished()
 		{
 			return stopDrawingPolygone;
 		}
