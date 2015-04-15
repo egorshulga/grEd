@@ -15,7 +15,7 @@
                 <RowDefinition Height="70"/>
                 <RowDefinition Height="250*"/>
                 <RowDefinition Height="100"/>
-                <RowDefinition Height="50*"/>
+                <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
             <Button x:Name="CloseButton" Content="Close" HorizontalAlignment="Right" Margin="0,0,10,10" Grid.Row="3" VerticalAlignment="Bottom" Width="75" IsCancel="True" Click="Close_Click"/>
             <Grid Grid.Row="2">
@@ -40,6 +40,8 @@
             <Button x:Name="drawButton" Content="Draw" HorizontalAlignment="Left" Margin="10,40,0,10" Width="75" Click="drawButton_Click"/>
             <Button x:Name="removeButton" Content="Remove" HorizontalAlignment="Left" Margin="165,40,0,0" VerticalAlignment="Top" Width="75" Click="removeButton_Click"/>
             <ListBox x:Name="FiguresOnCanvasBox" Grid.Row="1" ItemsSource="{Binding figuresOnCanvas}" SelectedItem="{Binding (grEd:MainWindow.selectedFigure)}" KeyUp="FiguresOnCanvasBox_KeyUp"/>
+            <Button Content="Button" HorizontalAlignment="Left" Margin="5,0,0,10" VerticalAlignment="Bottom" Width="75" Grid.Row="3"/>
+            <Button Content="Button" HorizontalAlignment="Left" Margin="85,0,0,10" Grid.Row="3" VerticalAlignment="Bottom" Width="75"/>
         </Grid>
     </Grid>
 </Window>
