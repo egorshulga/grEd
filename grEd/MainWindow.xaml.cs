@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -23,8 +24,7 @@ namespace grEd
 		public MainWindow()
 		{
 			InitializeComponent();
-//			loadLibraries(@"D:\for-study\ootpisp\labs\01\grEd\grEd\bin\Debug\bin\DefaultFigures.dll");
-//			loadLibraries("/bin");
+			loadLibraries(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin"));
 
 			figuresList = new FiguresList(Canvas);
 			figuresOnCanvas = figuresList.figures;
@@ -35,11 +35,20 @@ namespace grEd
 
 		private void loadLibraries(string path)
 		{
-			Assembly assembly = Assembly.Load(path);
-
 			availableFiguresToDraw = new List<Type>();
-
-			availableFiguresToDraw.AddRange(assembly.GetTypes().Where(type => type.IsSubclassOf(typeof(Figure.Figure))));
+			foreach (string dll in Directory.GetFiles(path, "*.dll", SearchOption.AllDirectories))
+			{
+				try
+				{
+					Assembly loadedAssembly = Assembly.LoadFile(dll);
+					availableFiguresToDraw.AddRange(loadedAssembly.GetTypes()
+						.Where(type => type.IsSubclassOf(typeof(Figure.Figure))));
+				}
+				catch (FileLoadException)
+				{ } // The Assembly has already been loaded.
+				catch (BadImageFormatException)
+				{ } // If a BadImageFormatException exception is thrown, the file is not an assembly.
+			}
 		}
 
 		
@@ -54,7 +63,7 @@ namespace grEd
 			colorsListInitialization();
 			thicknessesListInitialization();
 			fillRulesInitialization();
-//			availableFiguresBoxInitialization();
+
 			DataContext = this;
 
 			selectedStrokeColor = Brushes.Black;
@@ -97,18 +106,6 @@ namespace grEd
 		{
 			fillRules = new List<FillRule> {FillRule.EvenOdd, FillRule.Nonzero};
 		}
-		private void availableFiguresBoxInitialization()
-		{
-			availableFiguresToDraw = new List<Type>();
-			//добавляемые фигуры могут наследоваться только от класса Figure (походу и от его производных тоже)
-			availableFiguresToDraw.AddRange(AppDomain.CurrentDomain.GetAssemblies()
-				.SelectMany(assembly => assembly.GetTypes())
-				.Where(type => type.IsSubclassOf(typeof (Figure.Figure))));
-		}
-
-
-		
-
 
 
 		private void Close_Click(object sender, RoutedEventArgs e)
