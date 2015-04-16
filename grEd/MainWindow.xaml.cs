@@ -23,8 +23,11 @@ namespace grEd
 		public MainWindow()
 		{
 			InitializeComponent();
+<<<<<<< HEAD
 			loadLibraries("/bin/DefaultFigures.dll");
 //			loadLibraries("/bin");
+=======
+>>>>>>> parent of 96c9319... 1ST LAB
 
 			figuresList = new FiguresList(Canvas);
 			figuresOnCanvas = figuresList.figures;
@@ -34,6 +37,7 @@ namespace grEd
 		}
 
 
+<<<<<<< HEAD
 		private void loadLibraries(string path)
 		{
 			Assembly assembly = Assembly.Load(path);
@@ -42,6 +46,45 @@ namespace grEd
 
 			availableFiguresToDraw.AddRange(assembly.GetTypes().Where(type => type.IsSubclassOf(typeof(Figure.Figure))));
 			
+=======
+		private void drawFigures()
+		{
+			var line = new Line(new Point(10, 10), new Point(400, 350)) {stroke = Brushes.Aqua};
+			var ellipse = new Ellipse(new Point(55, 10), new Point(195, 100)) {fill = Brushes.Tan};
+			var curve = new Curve(new Point(5, 110), new Point(50, 90), new Point(150, 170), new Point(300, 120))
+			{
+				strokeThickness = 10,
+				stroke = Brushes.Crimson
+			};
+			var polygone = new Polygone(
+				new List<Point>
+				{
+					new Point(2, 200),
+					new Point(5, 205),
+					new Point(150, 180),
+					new Point(395, 220),
+					new Point(400, 215)
+				}) {fill = Brushes.Blue};
+			var triangle = new Triangle(new Point(207, 3), new Point(254, 22), new Point(220, 200));
+			var rightTriangle = new RightTriangle(new Point(270, 10), new Point(350, 197))
+			{
+				fill = Brushes.Chartreuse,
+				stroke = null,
+			};
+			var rectangle = new Rectangle(new Point(375, 20), new Point(500, 307))
+			{
+				fill = Brushes.Coral
+			};
+
+			figuresList.add(line);
+			figuresList.add(ellipse);
+			figuresList.add(curve);
+			figuresList.add(polygone);
+			figuresList.add(triangle);
+			figuresList.add(rightTriangle);
+			figuresList.add(rectangle);
+		}
+>>>>>>> parent of 96c9319... 1ST LAB
 
 //			availableFiguresToDraw.AddRange(AppDomain.CurrentDomain.GetAssemblies()
 //				.SelectMany(assembly => assembly.GetTypes())
@@ -106,8 +149,7 @@ namespace grEd
 		private void availableFiguresBoxInitialization()
 		{
 			availableFiguresToDraw = new List<Type>();
-			//TODO: rewrite this part of code
-			//добавляемые фигуры могут наследоваться только от класса Figure 
+			//добавляемые фигуры могут наследоваться только от класса Figure (походу и от его производных тоже)
 			availableFiguresToDraw.AddRange(AppDomain.CurrentDomain.GetAssemblies()
 				.SelectMany(assembly => assembly.GetTypes())
 				.Where(type => type.IsSubclassOf(typeof (Figure.Figure))));
@@ -175,20 +217,17 @@ namespace grEd
 		private dynamic currentDrawingFigure;
 		private void drawButton_Click(object sender, RoutedEventArgs e)
 		{
-			if (selectedFigure != null)
-			{
-				dynamic figure = Activator.CreateInstance(selectedFigureTypeToDraw);
+			dynamic figure = Activator.CreateInstance(selectedFigureTypeToDraw);
 
-				figure.stroke = selectedStrokeColor;
-				figure.fill = selectedFillColor;
-				figure.strokeThickness = selectedStrokeThickness;
-				figure.fillRule = selectedFillRule;
+			figure.stroke = selectedStrokeColor;
+			figure.fill = selectedFillColor;
+			figure.strokeThickness = selectedStrokeThickness;
+			figure.fillRule = selectedFillRule;
 
-				figuresList.add(figure as Figure.Figure);
-				FiguresOnCanvasBox.Items.Refresh();
+			figuresList.add(figure as Figure.Figure);
+			FiguresOnCanvasBox.Items.Refresh();	
 
-				currentDrawingFigure = figure;
-			}
+			currentDrawingFigure = figure;
 		}
 
 
