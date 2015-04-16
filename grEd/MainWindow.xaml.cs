@@ -24,6 +24,8 @@ namespace grEd
 		public MainWindow()
 		{
 			InitializeComponent();
+			loadLibraries("/bin");
+
 
 			figuresList = new FiguresList(Canvas);
 			figuresOnCanvas = figuresList.figures;
@@ -32,6 +34,13 @@ namespace grEd
 
 			drawFigures();
 		}
+
+
+		private void loadLibraries(string path)
+		{
+			
+		}
+
 
 
 		private void drawFigures()
@@ -130,10 +139,13 @@ namespace grEd
 		private void availableFiguresBoxInitialization()
 		{
 			availableFiguresToDraw = new List<Type>();
-			//добавляемые фигуры могут наследоваться только от класса Figure (походу и от его производных тоже)
+			//TODO: rewrite this part of code
+			//добавляемые фигуры могут наследоваться только от класса Figure 
 			availableFiguresToDraw.AddRange(AppDomain.CurrentDomain.GetAssemblies()
 				.SelectMany(assembly => assembly.GetTypes())
 				.Where(type => type.IsSubclassOf(typeof (Figure.Figure))));
+
+//			availableFiguresToDraw.AddRange();
 		}
 
 
@@ -204,17 +216,20 @@ namespace grEd
 		private dynamic currentDrawingFigure;
 		private void drawButton_Click(object sender, RoutedEventArgs e)
 		{
-			dynamic figure = Activator.CreateInstance(selectedFigureTypeToDraw);
+			if (selectedFigure != null)
+			{
+				dynamic figure = Activator.CreateInstance(selectedFigureTypeToDraw);
 
-			figure.stroke = selectedStrokeColor;
-			figure.fill = selectedFillColor;
-			figure.strokeThickness = selectedStrokeThickness;
-			figure.fillRule = selectedFillRule;
+				figure.stroke = selectedStrokeColor;
+				figure.fill = selectedFillColor;
+				figure.strokeThickness = selectedStrokeThickness;
+				figure.fillRule = selectedFillRule;
 
-			figuresList.add(figure as Figure.Figure);
-			FiguresOnCanvasBox.Items.Refresh();	
+				figuresList.add(figure as Figure.Figure);
+				FiguresOnCanvasBox.Items.Refresh();
 
-			currentDrawingFigure = figure;
+				currentDrawingFigure = figure;
+			}
 		}
 
 
