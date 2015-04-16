@@ -13,6 +13,7 @@ namespace Figure
 
 		public Point startPoint { get { return pathFigure.StartPoint; } set { pathFigure.StartPoint = value; isStartPointSet = true; } }
 		public bool isStartPointSet { get; set; }
+
 		public Brush stroke { get { return path.Stroke; } set { path.Stroke = value; } }
 		public double strokeThickness { get { return path.StrokeThickness; } set { path.StrokeThickness = value; } }
 		public Brush fill { get { return path.Fill; } set { path.Fill = value; } }

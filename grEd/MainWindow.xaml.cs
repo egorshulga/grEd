@@ -7,7 +7,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using DefaultFigures;
 
 namespace grEd
 {
@@ -24,64 +23,32 @@ namespace grEd
 		public MainWindow()
 		{
 			InitializeComponent();
-			loadLibraries("/bin");
-
+			loadLibraries("/bin/DefaultFigures.dll");
+//			loadLibraries("/bin");
 
 			figuresList = new FiguresList(Canvas);
 			figuresOnCanvas = figuresList.figures;
 
 			comboBoxesInitialization();
 
-			drawFigures();
 		}
 
 
 		private void loadLibraries(string path)
 		{
+			Assembly assembly = Assembly.Load(path);
+
+			availableFiguresToDraw = new List<Type>();
+
+			availableFiguresToDraw.AddRange(assembly.GetTypes().Where(type => type.IsSubclassOf(typeof(Figure.Figure))));
 			
+
+//			availableFiguresToDraw.AddRange(AppDomain.CurrentDomain.GetAssemblies()
+//				.SelectMany(assembly => assembly.GetTypes())
+//				.Where(type => type.IsSubclassOf(typeof(Figure.Figure))));
+
 		}
-
-
-
-		private void drawFigures()
-		{
-			var line = new Line(new Point(10, 10), new Point(400, 350)) {stroke = Brushes.Aqua};
-			var ellipse = new Ellipse(new Point(55, 10), new Point(195, 100)) {fill = Brushes.Tan};
-			var curve = new Curve(new Point(5, 110), new Point(50, 90), new Point(150, 170), new Point(300, 120))
-			{
-				strokeThickness = 10,
-				stroke = Brushes.Crimson
-			};
-			var polygone = new Polygone(
-				new List<Point>
-				{
-					new Point(2, 200),
-					new Point(5, 205),
-					new Point(150, 180),
-					new Point(395, 220),
-					new Point(400, 215)
-				}) {fill = Brushes.Blue};
-			var triangle = new Triangle(new Point(207, 3), new Point(254, 22), new Point(220, 200));
-			var rightTriangle = new RightTriangle(new Point(270, 10), new Point(350, 197))
-			{
-				fill = Brushes.Chartreuse,
-				stroke = null,
-			};
-			var rectangle = new Rectangle(new Point(375, 20), new Point(500, 307))
-			{
-				fill = Brushes.Coral
-			};
-
-			figuresList.add(line);
-			figuresList.add(ellipse);
-			figuresList.add(curve);
-			figuresList.add(polygone);
-			figuresList.add(triangle);
-			figuresList.add(rightTriangle);
-			figuresList.add(rectangle);
-		}
-
-
+		
 
 
 
@@ -93,7 +60,7 @@ namespace grEd
 			colorsListInitialization();
 			thicknessesListInitialization();
 			fillRulesInitialization();
-			availableFiguresBoxInitialization();
+//			availableFiguresBoxInitialization();
 			DataContext = this;
 
 			selectedStrokeColor = Brushes.Black;
@@ -144,18 +111,10 @@ namespace grEd
 			availableFiguresToDraw.AddRange(AppDomain.CurrentDomain.GetAssemblies()
 				.SelectMany(assembly => assembly.GetTypes())
 				.Where(type => type.IsSubclassOf(typeof (Figure.Figure))));
-
-//			availableFiguresToDraw.AddRange();
 		}
 
 
-
-
-
-
-
-
-
+		
 
 
 
