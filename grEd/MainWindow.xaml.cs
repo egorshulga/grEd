@@ -17,19 +17,17 @@ namespace grEd
 	[SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
 	public partial class MainWindow
 	{
-		private readonly FiguresList figuresList;
+		private FiguresList figuresList;
 		public List<Figure.Figure> figuresOnCanvas { get; set; }
 		public Figure.Figure selectedFigure { get; set; }
 
 		public MainWindow()
 		{
 			InitializeComponent();
+
 			loadLibraries(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin"));
 
-			figuresList = new FiguresList(Canvas);
-			figuresOnCanvas = figuresList.figures;
-
-			comboBoxesInitialization();
+			boxesInitialization();
 		}
 
 
@@ -50,16 +48,15 @@ namespace grEd
 				{ } // If a BadImageFormatException exception is thrown, the file is not an assembly.
 			}
 		}
-
 		
 
 
 
-
-
-
-		private void comboBoxesInitialization()
+		private void boxesInitialization()
 		{
+			figuresList = new FiguresList(Canvas);
+			figuresOnCanvas = figuresList.figures;
+
 			colorsListInitialization();
 			thicknessesListInitialization();
 			fillRulesInitialization();
@@ -108,10 +105,18 @@ namespace grEd
 		}
 
 
+
+
+
+
+
 		private void Close_Click(object sender, RoutedEventArgs e)
 		{
 			Application.Current.Shutdown();
 		}
+
+
+
 
 
 		private void strokeColorBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
