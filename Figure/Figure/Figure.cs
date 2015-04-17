@@ -1,10 +1,12 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace Figure
 {
+	[Serializable]
 	public class Figure
 	{
 		private readonly Path path = new Path();

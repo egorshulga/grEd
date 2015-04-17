@@ -1,12 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Windows.Controls;
 
 namespace grEd
 {
 	[SuppressMessage("ReSharper", "ParameterHidesMember")]
+	[Serializable]
 	class FiguresList
 	{
+		[NonSerialized]
 		private Panel panel;
 
 		internal readonly List<Figure.Figure> figures = new List<Figure.Figure>();

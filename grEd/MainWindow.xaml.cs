@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -54,7 +55,8 @@ namespace grEd
 
 		private void boxesInitialization()
 		{
-			figuresList = new FiguresList(Canvas);
+//			figuresList = new FiguresList(Canvas);
+			deserializeFiguresList();
 			figuresOnCanvas = figuresList.figures;
 
 			colorsListInitialization();
@@ -225,6 +227,43 @@ namespace grEd
 		}
 
 
+
+
+		private const string serializedFiguresListPath = "save.bin";
+		private void serializeFiguresList()
+		{
+			BinaryFormatter binaryFormatter = new BinaryFormatter();
+			using (
+				FileStream stream = new FileStream(serializedFiguresListPath, FileMode.Create, FileAccess.Write, FileShare.None))
+			{
+				binaryFormatter.Serialize(stream, figuresList);
+			}
+		}
+
+		private void deserializeFiguresList()
+		{
+			BinaryFormatter binaryFormatter = new BinaryFormatter();
+			try
+			{
+				using (FileStream stream = File.OpenRead(serializedFiguresListPath))
+				{
+					figuresList = (FiguresList)binaryFormatter.Deserialize(stream);
+					figuresList.setPanel(Canvas);
+				}
+			}
+			catch (Exception e)
+			{
+				MessageBox.Show(e.Message);
+				figuresList = new FiguresList(Canvas);
+			}
+		}
+
+
+
+		private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+			serializeFiguresList();
+		}
 	
 	}
 }

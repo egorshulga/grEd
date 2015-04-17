@@ -1,9 +1,11 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Media;
 using Figure;
 
 namespace DefaultFigures
 {
+	[Serializable]
 	public class Curve : Figure.Figure, IDrawable
 	{
 		private BezierSegment segment;
