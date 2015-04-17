@@ -19,11 +19,13 @@ namespace DefaultFigures
 			this.point2 = point2;
 			this.endPoint = endPoint;
 			isClosed = false;
+			isFilled = false;
 		}
 
 		public Curve()
 		{
 			isClosed = false;
+			isFilled = false;
 		}
 
 
@@ -48,14 +50,15 @@ namespace DefaultFigures
 		{
 			switch (selector)
 			{
+				case PointType.endPoint:
+					endPoint = point;
+					break;
 				case PointType.point1:
 					point1 = point;
+					point2 = point;
 					break;
 				case PointType.point2:
 					point2 = point;
-					break;
-				case PointType.endPoint:
-					endPoint = point;
 					break;
 			}
 		}

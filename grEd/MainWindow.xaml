@@ -17,7 +17,7 @@
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
-            <Button x:Name="CloseButton" Content="Close" HorizontalAlignment="Right" Margin="0,0,10,10" Grid.Row="3" VerticalAlignment="Bottom" Width="75" IsCancel="True" Click="Close_Click"/>
+            <Button x:Name="CloseButton" Content="Close" HorizontalAlignment="Right" Margin="0,0,10,10" Grid.Row="3" VerticalAlignment="Bottom" Width="75" IsCancel="True" Click="Close_Click" TabIndex="12"/>
             <Grid Grid.Row="2">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -31,18 +31,16 @@
                 <Label Content="Stroke thickness" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Label Content="Fill color" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Margin="5,0,0,0"/>
                 <Label Content="Fill rule" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top"/>
-                <ComboBox x:Name="strokeColorBox" HorizontalAlignment="Center" Margin="5,21,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding colorsList}" SelectedItem="{Binding (grEd:MainWindow.selectedStrokeColor)}" SelectionChanged="strokeColorBox_SelectionChanged"/>
-                <ComboBox x:Name="fillRuleBox" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Grid.Row="1" Margin="0,20,5,0" ItemsSource="{Binding fillRules}" SelectedItem="{Binding (grEd:MainWindow.selectedFillRule)}" SelectionChanged="fillRuleBox_SelectionChanged"/>
-                <ComboBox x:Name="strokeThicknessBox" Grid.Column="1" HorizontalAlignment="Left" Margin="0,21,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding thicknessesList}" SelectedItem="{Binding (grEd:MainWindow.selectedStrokeThickness)}" SelectionChanged="strokeThicknessBox_SelectionChanged"/>
-                <ComboBox x:Name="fillColorBox" HorizontalAlignment="Center" Margin="5,20,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" ItemsSource="{Binding colorsList}" SelectedItem="{Binding (grEd:MainWindow.selectedFillColor)}" SelectionChanged="fillColorBox_SelectionChanged"/>
+                <ComboBox x:Name="strokeColorBox" HorizontalAlignment="Center" Margin="5,21,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding colorsList}" SelectedItem="{Binding (grEd:MainWindow.selectedStrokeColor)}" SelectionChanged="strokeColorBox_SelectionChanged" TabIndex="6"/>
+                <ComboBox x:Name="fillRuleBox" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Grid.Row="1" Margin="0,20,5,0" ItemsSource="{Binding fillRules}" SelectedItem="{Binding (grEd:MainWindow.selectedFillRule)}" SelectionChanged="fillRuleBox_SelectionChanged" TabIndex="9"/>
+                <ComboBox x:Name="strokeThicknessBox" Grid.Column="1" HorizontalAlignment="Left" Margin="0,21,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding thicknessesList}" SelectedItem="{Binding (grEd:MainWindow.selectedStrokeThickness)}" SelectionChanged="strokeThicknessBox_SelectionChanged" TabIndex="7"/>
+                <ComboBox x:Name="fillColorBox" HorizontalAlignment="Center" Margin="5,20,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" ItemsSource="{Binding colorsList}" SelectedItem="{Binding (grEd:MainWindow.selectedFillColor)}" SelectionChanged="fillColorBox_SelectionChanged" TabIndex="8"/>
             </Grid>
-            <ComboBox x:Name="availableFiguresBox" VerticalAlignment="Top" Width="235" HorizontalAlignment="Center" Margin="5,10,10,0" ItemsSource="{Binding availableFiguresToDraw}" SelectedItem="{Binding (grEd:MainWindow.selectedFigureTypeToDraw)}"/>
-            <Button x:Name="drawButton" Content="Draw" HorizontalAlignment="Left" Margin="5,40,0,10" Width="75" Click="drawButton_Click"/>
-            <Button x:Name="removeButton" Content="Remove" HorizontalAlignment="Left" Margin="165,40,0,0" VerticalAlignment="Top" Width="75" Click="removeButton_Click"/>
-            <ListBox x:Name="FiguresOnCanvasBox" Grid.Row="1" ItemsSource="{Binding figuresOnCanvas}" SelectedItem="{Binding (grEd:MainWindow.selectedFigure)}" KeyUp="FiguresOnCanvasBox_KeyUp" IsSynchronizedWithCurrentItem="True" SelectionMode="Extended"/>
-            <Button Content="Button" HorizontalAlignment="Left" Margin="5,0,0,10" VerticalAlignment="Bottom" Width="75" Grid.Row="3"/>
-            <Button Content="Button" HorizontalAlignment="Left" Margin="85,0,0,10" Grid.Row="3" VerticalAlignment="Bottom" Width="75"/>
-            <Button x:Name="clearButton" Content="Clear" HorizontalAlignment="Left" Margin="85,40,0,0" VerticalAlignment="Top" Width="75" Click="clearButton_Click"/>
+            <ComboBox x:Name="availableFiguresBox" VerticalAlignment="Top" Width="235" HorizontalAlignment="Center" Margin="5,10,10,0" ItemsSource="{Binding availableFiguresToDraw}" SelectedItem="{Binding (grEd:MainWindow.selectedFigureTypeToDraw)}" TabIndex="1"/>
+            <Button x:Name="drawButton" Content="Draw" HorizontalAlignment="Left" Margin="5,40,0,10" Width="75" Click="drawButton_Click" TabIndex="2"/>
+            <Button x:Name="removeButton" Content="Remove" HorizontalAlignment="Left" Margin="165,40,0,0" VerticalAlignment="Top" Width="75" Click="removeButton_Click" TabIndex="4"/>
+            <ListBox x:Name="FiguresOnCanvasBox" Grid.Row="1" ItemsSource="{Binding figuresOnCanvas}" SelectedItem="{Binding (grEd:MainWindow.selectedFigure)}" KeyUp="FiguresOnCanvasBox_KeyUp" IsSynchronizedWithCurrentItem="True" TabIndex="5"/>
+            <Button x:Name="clearButton" Content="Clear" HorizontalAlignment="Left" Margin="85,40,0,0" VerticalAlignment="Top" Width="75" Click="clearButton_Click" TabIndex="3"/>
         </Grid>
     </Grid>
 </Window>
