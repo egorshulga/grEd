@@ -56,8 +56,8 @@ namespace grEd
 
 		private void boxesInitialization()
 		{
-			figuresList = new FiguresList(Canvas);
-//			deserializeFiguresList();
+//			figuresList = new FiguresList(Canvas);
+			deserializeFiguresList();
 			figuresOnCanvas = figuresList.figures;
 
 			colorsListInitialization();
@@ -270,7 +270,7 @@ namespace grEd
 
 		private void Window_Closing(object sender, CancelEventArgs e)
 		{
-//			serializeFiguresList();
+			serializeFiguresList();
 		}
 	
 	}

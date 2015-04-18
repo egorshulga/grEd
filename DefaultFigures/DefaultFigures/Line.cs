@@ -73,12 +73,12 @@ namespace DefaultFigures
 		[OnDeserializing]
 		private void onDeserializing(StreamingContext context)
 		{
-			segment = addLineSegment(new Point());
+			segment = new LineSegment();
 		}
 		[OnDeserialized]
 		private void onDeserialized(StreamingContext context)
 		{
-			segment.Point = endPoint;
+
 		}
 	}
 }
