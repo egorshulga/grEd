@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
@@ -170,32 +171,39 @@ namespace grEd
 
 
 		private dynamic currentDrawingFigure;
+
 		private void drawButton_Click(object sender, RoutedEventArgs e)
 		{
-			dynamic figure = Activator.CreateInstance(selectedFigureTypeToDraw);
+			if (selectedFigureTypeToDraw != null)
+			{
+				dynamic figure = Activator.CreateInstance(selectedFigureTypeToDraw);
 
-			figure.stroke = selectedStrokeColor;
-			figure.fill = selectedFillColor;
-			figure.strokeThickness = selectedStrokeThickness;
-			figure.fillRule = selectedFillRule;
+				figure.stroke = selectedStrokeColor;
+				figure.fill = selectedFillColor;
+				figure.strokeThickness = selectedStrokeThickness;
+				figure.fillRule = selectedFillRule;
 
-			figuresList.add(figure as Figure.Figure);
-			FiguresOnCanvasBox.Items.Refresh();	
+				figuresList.add(figure as Figure.Figure);
+				FiguresOnCanvasBox.Items.Refresh();
 
-			currentDrawingFigure = figure;
+				currentDrawingFigure = figure;
+			}
 		}
 
 
 		private void Canvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
-			if (isFigureBeingDrawedAndExists())
+			if (selectedFigureTypeToDraw != null)
 			{
-				currentDrawingFigure.mouseDrawHandler(Mouse.GetPosition(Canvas));
-			}
-			else
-			{
-				drawButton_Click(sender, e);
-				currentDrawingFigure.mouseDrawHandler(Mouse.GetPosition(Canvas));
+				if (isFigureBeingDrawedAndExists())
+				{
+					currentDrawingFigure.mouseDrawHandler(Mouse.GetPosition(Canvas));
+				}
+				else
+				{
+					drawButton_Click(sender, e);
+					currentDrawingFigure.mouseDrawHandler(Mouse.GetPosition(Canvas));
+				}
 			}
 		}
 
@@ -260,7 +268,7 @@ namespace grEd
 
 
 
-		private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+		private void Window_Closing(object sender, CancelEventArgs e)
 		{
 //			serializeFiguresList();
 		}

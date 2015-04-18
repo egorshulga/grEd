@@ -29,6 +29,7 @@ namespace Figure
 
 
 		private const bool isStroked = true;
+		[NonSerialized]
 		private readonly Brush defaultBrush = Brushes.Black;
 		private const double rotationAngle = 0;
 		private const bool isLargeArc = true;

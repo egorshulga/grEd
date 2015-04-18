@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DefaultFigures">
+      <HintPath>bin\Debug\bin\DefaultFigures.dll</HintPath>
+    </Reference>
     <Reference Include="Figure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\bin\Figure.dll</HintPath>

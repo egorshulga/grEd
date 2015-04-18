@@ -22,7 +22,7 @@ namespace Trapezium
 	    {
 		    set
 		    {
-			    segment2.Point = new Point(value.X,
+				segment2.Point = new Point(value.X,
 				    point2.Y + ((point1.Y - startPoint.Y)*(value.X - point2.X))/(point1.X - startPoint.X));
 		    }
 	    }

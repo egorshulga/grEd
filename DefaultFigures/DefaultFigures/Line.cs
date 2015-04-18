@@ -69,6 +69,7 @@ namespace DefaultFigures
 		}
 
 
+
 		[OnDeserializing]
 		private void onDeserializing(StreamingContext context)
 		{
