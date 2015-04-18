@@ -1,8 +1,10 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Media;
 
 namespace DefaultFigures
 {
+	[Serializable]
 	public class Rectangle : RightTriangle
 	{
 		private LineSegment segment3;

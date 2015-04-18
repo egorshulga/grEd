@@ -5,7 +5,8 @@ using Figure;
 
 namespace Trapezium
 {
-    public class Trapezium : Figure.Figure, IDrawable
+	[Serializable]
+	public class Trapezium : Figure.Figure, IDrawable
     {
 	    private LineSegment segment1;
 	    private LineSegment segment2;

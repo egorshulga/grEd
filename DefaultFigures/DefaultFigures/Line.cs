@@ -1,13 +1,21 @@
-﻿using System.Windows;
+﻿using System;
+using System.Runtime.Serialization;
+using System.Windows;
 using System.Windows.Media;
 using Figure;
 
 namespace DefaultFigures
 {
+	[Serializable]
 	public class Line : Figure.Figure, IDrawable
 	{
+		[NonSerialized]
 		private LineSegment segment;
-		private Point endPoint { set { segment.Point = value; } }
+		private Point endPoint
+		{
+			get { return segment.Point; }
+			set { segment.Point = value; }
+		}
 
 
 		public Line(Point startPoint, Point endPoint)
@@ -58,6 +66,18 @@ namespace DefaultFigures
 		public void stopDrawing()
 		{
 			selector = PointType.stopDrawing;
+		}
+
+
+		[OnDeserializing]
+		private void onDeserializing(StreamingContext context)
+		{
+			segment = addLineSegment(new Point());
+		}
+		[OnDeserialized]
+		private void onDeserialized(StreamingContext context)
+		{
+			segment.Point = endPoint;
 		}
 	}
 }

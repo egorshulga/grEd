@@ -5,6 +5,7 @@ using Figure;
 
 namespace DefaultFigures
 {
+	[Serializable]
 	public class Ellipse : Figure.Figure, IDrawable
 	{
 		private ArcSegment segment1;

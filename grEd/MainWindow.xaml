@@ -37,7 +37,7 @@
                 <ComboBox x:Name="fillColorBox" HorizontalAlignment="Center" Margin="5,20,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" ItemsSource="{Binding colorsList}" SelectedItem="{Binding (grEd:MainWindow.selectedFillColor)}" SelectionChanged="fillColorBox_SelectionChanged" TabIndex="8"/>
             </Grid>
             <ComboBox x:Name="availableFiguresBox" VerticalAlignment="Top" Width="235" HorizontalAlignment="Center" Margin="5,10,10,0" ItemsSource="{Binding availableFiguresToDraw}" SelectedItem="{Binding (grEd:MainWindow.selectedFigureTypeToDraw)}" TabIndex="1"/>
-            <Button x:Name="drawButton" Content="Draw" HorizontalAlignment="Left" Margin="5,40,0,10" Width="75" Click="drawButton_Click" TabIndex="2"/>
+            <Button x:Name="drawButton" Content="Draw" HorizontalAlignment="Left" Margin="5,40,0,10" Width="75" Click="drawButton_Click" TabIndex="2" Visibility="Hidden"/>
             <Button x:Name="removeButton" Content="Remove" HorizontalAlignment="Left" Margin="165,40,0,0" VerticalAlignment="Top" Width="75" Click="removeButton_Click" TabIndex="4"/>
             <ListBox x:Name="FiguresOnCanvasBox" Grid.Row="1" ItemsSource="{Binding figuresOnCanvas}" SelectedItem="{Binding (grEd:MainWindow.selectedFigure)}" KeyUp="FiguresOnCanvasBox_KeyUp" IsSynchronizedWithCurrentItem="True" TabIndex="5"/>
             <Button x:Name="clearButton" Content="Clear" HorizontalAlignment="Left" Margin="85,40,0,0" VerticalAlignment="Top" Width="75" Click="clearButton_Click" TabIndex="3"/>

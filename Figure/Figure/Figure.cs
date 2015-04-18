@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -9,9 +10,12 @@ namespace Figure
 	[Serializable]
 	public class Figure
 	{
-		private readonly Path path = new Path();
-		private readonly PathGeometry pathGeometry = new PathGeometry();
-		private readonly PathFigure pathFigure = new PathFigure();
+		[NonSerialized]
+		private Path path = new Path();
+		[NonSerialized]
+		private PathGeometry pathGeometry = new PathGeometry();
+		[NonSerialized]
+		private PathFigure pathFigure = new PathFigure();
 
 		public Point startPoint { get { return pathFigure.StartPoint; } set { pathFigure.StartPoint = value; isStartPointSet = true; } }
 		public bool isStartPointSet { get; set; }
@@ -75,6 +79,17 @@ namespace Figure
 		private void addSegment(PathSegment segment)
 		{
 			pathFigure.Segments.Add(segment);
+		}
+
+
+		[OnDeserializing]
+		private void onDeserializating(StreamingContext context)
+		{
+			path = new Path();
+			pathGeometry = new PathGeometry();
+			pathFigure = new PathFigure();
+			pathGeometry.Figures.Add(pathFigure);
+			path.Data = pathGeometry;
 		}
 
 	}

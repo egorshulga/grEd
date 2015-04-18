@@ -1,9 +1,11 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Media;
 using Figure;
 
 namespace DefaultFigures
 {
+	[Serializable]
 	public class RightTriangle : Figure.Figure, IDrawable
 	{
 		protected LineSegment segment1;

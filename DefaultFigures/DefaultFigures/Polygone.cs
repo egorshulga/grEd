@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
 using Figure;
 
 namespace DefaultFigures
 {
+	[Serializable]
 	public class Polygone : Figure.Figure, IDrawable
 	{
 		private LineSegment lastSegment;
