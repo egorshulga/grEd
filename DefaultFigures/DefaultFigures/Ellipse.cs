@@ -8,7 +8,9 @@ namespace DefaultFigures
 	[Serializable]
 	public class Ellipse : Figure.Figure, IDrawable
 	{
+		[NonSerialized]
 		private ArcSegment segment1;
+		[NonSerialized]
 		private ArcSegment segment2;
 		public Point entryPoint;
 		public Point exitPoint

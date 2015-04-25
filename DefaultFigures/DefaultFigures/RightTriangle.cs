@@ -8,7 +8,9 @@ namespace DefaultFigures
 	[Serializable]
 	public class RightTriangle : Figure.Figure, IDrawable
 	{
+		[NonSerialized]
 		protected LineSegment segment1;
+		[NonSerialized]
 		protected LineSegment segment2;
 
 		public Point entryPoint { set { startPoint = value; } }

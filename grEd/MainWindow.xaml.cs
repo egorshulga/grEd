@@ -88,10 +88,10 @@ namespace grEd
 			Type brushesType = typeof(Brushes);
 			// Get all static properties
 			var properties = brushesType.GetProperties(BindingFlags.Static | BindingFlags.Public);
-			foreach (var prop in properties)
+			foreach (var property in properties)
 			{
 //				string name = prop.Name;
-				SolidColorBrush brush = (SolidColorBrush)prop.GetValue(null, null);
+				SolidColorBrush brush = (SolidColorBrush)property.GetValue(null, null);
 				colorsList.Add(brush);
 			}
 		}

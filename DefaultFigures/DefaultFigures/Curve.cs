@@ -8,6 +8,7 @@ namespace DefaultFigures
 	[Serializable]
 	public class Curve : Figure.Figure, IDrawable
 	{
+		[NonSerialized]
 		private BezierSegment segment;
 		private Point point1 { get { return segment.Point1; } set { segment.Point1 = value; } }
 		private Point point2 { get { return segment.Point2; } set { segment.Point2 = value; } }

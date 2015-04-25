@@ -7,6 +7,7 @@ namespace DefaultFigures
 	[Serializable]
 	public class Rectangle : RightTriangle
 	{
+		[NonSerialized]
 		private LineSegment segment3;
 
 		public override sealed Point exitPoint

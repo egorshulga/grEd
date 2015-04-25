@@ -8,7 +8,9 @@ namespace DefaultFigures
 	[Serializable]
 	public class Triangle : Figure.Figure, IDrawable
 	{
+		[NonSerialized]
 		private LineSegment segment1;
+		[NonSerialized]
 		private LineSegment segment2;
 
 		public Point point1 { set { segment1.Point = value; } }

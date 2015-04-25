@@ -8,10 +8,14 @@ namespace Trapezium
 	[Serializable]
 	public class Trapezium : Figure.Figure, IDrawable
     {
-	    private LineSegment segment1;
-	    private LineSegment segment2;
+		[NonSerialized]
+		private LineSegment segment1;
+		[NonSerialized]
+		private LineSegment segment2;
+		[NonSerialized]
 	    private LineSegment segment3;
-	    private LineSegment segment4;
+		[NonSerialized]
+		private LineSegment segment4;
 
 		//Сегменты пронумерованы по возрастанию по часовой стрелке
 		//Точки пронумерованы в порядке их рисования

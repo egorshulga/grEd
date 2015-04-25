@@ -9,6 +9,7 @@ namespace DefaultFigures
 	[Serializable]
 	public class Polygone : Figure.Figure, IDrawable
 	{
+		[NonSerialized]
 		private LineSegment lastSegment;
 		private Point lastPoint
 		{
